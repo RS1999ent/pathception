@@ -1,0 +1,8 @@
+[{}
+,{"id":8,"precursor":5,"cost":6261512,"type":"Structural mutation"}
+,{"id":9,"precursor":9,"cost":0,"type":"Structural mutation"}
+,{"id":4,"precursor":4,"cost":0,"type":"Structural mutation"}
+,{"id":17,"precursor":5,"cost":0,"type":"Structural mutation"}
+,{"id":9,"precursor":9,"cost":0,"type":"Response time change"}
+,{"id":6,"precursor":5,"cost":0,"type":"Structural mutation"}
+]

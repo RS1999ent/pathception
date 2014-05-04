@@ -1,0 +1,13 @@
+{  "nodes": [
+     {"id":"1", "fontcolor":"blue","shape":"plaintext","label":"Cluster ID: 5\nSpecific Mutation Type: Originating cluster\nOverall Mutation Type: Originating_Cluster\n\nAvg. response times: 8287 us ; 0 us\n"}
+    ,{"id":"6349327762233262.6349327762234072", "label":"e10__t3__NFS3_WRITE_CALL_TYPE\nDEFAULT"}
+    ,{"id":"6349327762233262.6349327762248307", "label":"e10__t3__NFS_CACHE_BLOCK_OP_TYPE\nNFSCACHE_WRITE"}
+    ,{"id":"6349327762233262.6349327762354050", "label":"e10__t3__NFS_CACHE_BLOCK_OP_TYPE\nNFSCACHE_WRITE"}
+    ,{"id":"6349327762233262.6349327762459200", "label":"e10__t3__NFS3_WRITE_REPLY_TYPE\nDEFAULT"}
+  ],
+  "edges": [
+     {"from":"6349327762233262.6349327762234072", "to":"6349327762233262.6349327762248307", "color":"black","label":"p:-2.00\n   a: 8268us / 0us\n   s: 41331us / 0us"}
+    ,{"from":"6349327762233262.6349327762248307", "to":"6349327762233262.6349327762354050", "color":"black","label":"p:-2.00\n   a: 8us / 0us\n   s: 5us / 0us"}
+    ,{"from":"6349327762233262.6349327762354050", "to":"6349327762233262.6349327762459200", "color":"black","label":"p:-2.00\n   a: 12us / 0us\n   s: 5us / 0us"}
+    ]
+}

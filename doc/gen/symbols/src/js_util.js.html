@@ -1,0 +1,100 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/*
+<span class='line'>  2</span>  * Copyright (c) 2014, Carnegie Mellon University.
+<span class='line'>  3</span>  * All rights reserved.
+<span class='line'>  4</span>  *
+<span class='line'>  5</span>  * Redistribution and use in source and binary forms, with or without
+<span class='line'>  6</span>  * modification, are permitted provided that the following conditions
+<span class='line'>  7</span>  * are met:
+<span class='line'>  8</span>  * 1. Redistributions of source code must retain the above copyright
+<span class='line'>  9</span>  *    notice, this list of conditions and the following disclaimer.
+<span class='line'> 10</span>  * 2. Redistributions in binary form must reproduce the above copyright
+<span class='line'> 11</span>  *    notice, this list of conditions and the following disclaimer in the
+<span class='line'> 12</span>  *    documentation and/or other materials provided with the distribution.
+<span class='line'> 13</span>  * 3. Neither the name of the University nor the names of its contributors
+<span class='line'> 14</span>  *    may be used to endorse or promote products derived from this software
+<span class='line'> 15</span>  *    without specific prior written permission.
+<span class='line'> 16</span>  *
+<span class='line'> 17</span>  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+<span class='line'> 18</span>  * ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+<span class='line'> 19</span>  * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+<span class='line'> 20</span>  * A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT
+<span class='line'> 21</span>  * HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+<span class='line'> 22</span>  * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+<span class='line'> 23</span>  * BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS
+<span class='line'> 24</span>  * OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED
+<span class='line'> 25</span>  * AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+<span class='line'> 26</span>  * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY
+<span class='line'> 27</span>  * WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+<span class='line'> 28</span>  * POSSIBILITY OF SUCH DAMAGE.
+<span class='line'> 29</span>  */</span><span class="WHIT">
+<span class='line'> 30</span> 
+<span class='line'> 31</span> </span><span class="COMM">/**
+<span class='line'> 32</span> @namespace General Utilities
+<span class='line'> 33</span> */</span><span class="WHIT">
+<span class='line'> 34</span> </span><span class="NAME">Util</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 35</span> 
+<span class='line'> 36</span> </span><span class="COMM">/**
+<span class='line'> 37</span> Import module into namespace target.
+<span class='line'> 38</span> */</span><span class="WHIT">
+<span class='line'> 39</span> </span><span class="NAME">Util.importTo</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="COMM">/**dict*/</span><span class="WHIT"> </span><span class="NAME">module</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="COMM">/**Object*/</span><span class="WHIT"> </span><span class="NAME">target</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 40</span> </span><span class="WHIT">    </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">e</span><span class="WHIT"> </span><span class="KEYW">in</span><span class="WHIT"> </span><span class="NAME">module</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 41</span> </span><span class="WHIT">        </span><span class="NAME">target</span><span class="PUNC">[</span><span class="NAME">e</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">module</span><span class="PUNC">[</span><span class="NAME">e</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 42</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 43</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 44</span> 
+<span class='line'> 45</span> </span><span class="COMM">/**
+<span class='line'> 46</span> @return a random integer between l and h
+<span class='line'> 47</span> */</span><span class="WHIT">
+<span class='line'> 48</span> </span><span class="NAME">Util.rint</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="COMM">/**int*/</span><span class="WHIT"> </span><span class="NAME">l</span><span class="PUNC">,</span><span class="COMM">/**int*/</span><span class="WHIT"> </span><span class="NAME">h</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 49</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">Math.floor</span><span class="PUNC">(</span><span class="PUNC">(</span><span class="NAME">Math.random</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">*</span><span class="PUNC">(</span><span class="NAME">h</span><span class="PUNC">+</span><span class="NUMB">1</span><span class="PUNC">-</span><span class="NAME">l</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">+</span><span class="NAME">l</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 50</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 51</span> 
+<span class='line'> 52</span> </span><span class="COMM">/**
+<span class='line'> 53</span> @return arr[dx] if (dx in arr) else def
+<span class='line'> 54</span> */</span><span class="WHIT">
+<span class='line'> 55</span> </span><span class="NAME">Util.getdefault</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">arr</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">dx</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">def</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 56</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">arr</span><span class="PUNC">[</span><span class="NAME">dx</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 57</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">arr</span><span class="PUNC">[</span><span class="NAME">dx</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 58</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 59</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">def</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 60</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 61</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 62</span> 
+<span class='line'> 63</span> </span><span class="COMM">/**
+<span class='line'> 64</span> Print info
+<span class='line'> 65</span> */</span><span class="WHIT">
+<span class='line'> 66</span> </span><span class="NAME">Util.info</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 67</span> </span><span class="WHIT">    </span><span class="NAME">console.log.apply</span><span class="PUNC">(</span><span class="NAME">console</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">arguments</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 68</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 69</span> </span><span class="COMM">/**
+<span class='line'> 70</span> Print log
+<span class='line'> 71</span> */</span><span class="WHIT">
+<span class='line'> 72</span> </span><span class="NAME">Util.log</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 73</span> </span><span class="WHIT">    </span><span class="NAME">console.log.apply</span><span class="PUNC">(</span><span class="NAME">console</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">arguments</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">    
+<span class='line'> 74</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 75</span> 
+<span class='line'> 76</span> </span><span class="NAME">Util.MAXDEBUG</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">100</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 77</span> </span><span class="NAME">Util.debugn</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 78</span> 
+<span class='line'> 79</span> </span><span class="COMM">/**
+<span class='line'> 80</span> Print debug up to Util.MAXDEBUG messages
+<span class='line'> 81</span> */</span><span class="WHIT">
+<span class='line'> 82</span> </span><span class="NAME">Util.debug</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 83</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">++</span><span class="NAME">Util.debugn</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">Util.MAXDEBUG</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 84</span> </span><span class="WHIT">        </span><span class="NAME">console.log.apply</span><span class="PUNC">(</span><span class="NAME">console</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">arguments</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 85</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 86</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 87</span> 
+<span class='line'> 88</span> </span><span class="COMM">/**
+<span class='line'> 89</span> Remove newlines from s
+<span class='line'> 90</span> */</span><span class="WHIT">
+<span class='line'> 91</span> </span><span class="NAME">Util.remnl</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="COMM">/**string*/</span><span class="WHIT"> </span><span class="NAME">s</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 92</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">s.replace</span><span class="PUNC">(</span><span class="STRN">"\n"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 93</span> </span><span class="PUNC">}</span></pre></body></html>

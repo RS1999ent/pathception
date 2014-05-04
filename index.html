@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html>
+<!--
+Copyright (c) 2014, Carnegie Mellon University.
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions
+are met:
+1. Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+2. Redistributions in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in the
+   documentation and/or other materials provided with the distribution.
+3. Neither the name of the University nor the names of its contributors
+   may be used to endorse or promote products derived from this software
+   without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT
+HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS
+OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED
+AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY
+WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+POSSIBILITY OF SUCH DAMAGE.
+-->
+<head>
+<title>Visualizing Request-Flow Comparison</title>
+
+<link rel="stylesheet" href="css/styles.css" type="text/css" media="screen">
+<link rel="stylesheet" href="css/blitzer/jquery-ui-1.8.12.custom.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="css/jquery.cluetip.css" type="text/css">
+
+<link rel="icon" type="image/png" href="css/logo.png" />
+
+<!-- global options -->
+<script language="javascript" type="text/javascript" src="js/options.js"></script>
+
+<!-- Libraries -->
+<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="lib/excanvas.js"></script><![endif]-->
+<script language="javascript" type="text/javascript" src="lib/jquery-1.5.2.js"></script>
+<script language="javascript" type="text/javascript" src="lib/jquery-ui-1.8.12.custom.min.js"></script>
+<script language="javascript" type="text/javascript" src="lib/jquery.cluetip.js"></script>
+<script language="javascript" type="text/javascript" src="lib/jit-mod.js"></script>
+<script language="javascript" type="text/javascript" src="lib/jquery.flot.min.js"></script>
+
+<!-- Our JS -->
+<script language="javascript" type="text/javascript" src="js/annotate.js"></script>
+<script language="javascript" type="text/javascript" src="js/const.js"></script>
+<script language="javascript" type="text/javascript" src="js/grader.js"></script>
+<script language="javascript" type="text/javascript" src="js/graphutil.js"></script>
+<script language="javascript" type="text/javascript" src="js/histogram.js"></script>
+<script language="javascript" type="text/javascript" src="js/jitextend.js"></script>
+<script language="javascript" type="text/javascript" src="js/layout.js"></script>
+<script language="javascript" type="text/javascript" src="js/mode.js"></script>
+<script language="javascript" type="text/javascript" src="js/rfgraph.js"></script>
+<script language="javascript" type="text/javascript" src="js/scrollbar.js"></script>
+<script language="javascript" type="text/javascript" src="js/sed.js"></script>
+<script language="javascript" type="text/javascript" src="js/util.js"></script>
+
+<script language="javascript" type="text/javascript" src="graphs/node_mappings/machine_node_names_to_human_node_names-infovis13.json"></script>
+<script language="javascript" type="text/javascript" src="graphs/layout_ex/layoutex.json"></script>
+
+<script language="javascript">
+Util.importTo(Util, window);
+importTo(GraphUtil, window);
+importTo(RFGraph, window);
+
+var fd = null;
+var graph = null;
+
+//annoying print bug: http://stackoverflow.com/questions/7825448/webkit-issues-with-event-layerx-and-event-layery
+(function(){
+    // remove layerX and layerY
+    var all = $.event.props,
+        len = all.length,
+        res = [];
+    while (len--) {
+      var el = all[len];
+      if (el != 'layerX' && el != 'layerY') res.push(el);
+    }
+    $.event.props = res;
+}());
+
+var reYplot = function() {
+    if (!graph) {
+        return;
+    }
+    GraphUtil.applyMultiY(graph, [
+        {key:"lentof",w:SHOWBOTH ? 1-FRACTO : FRACFROM},
+        {key:"lentot",w:SHOWBOTH ? 1-FRACFROM : FRACTO},
+        {key:"lentob",w:SHOWBOTH ? FRACFROM+FRACTO-1 : 0}
+    ]);
+
+    fd.graph.eachNode(function(n) {
+        var nd = graph.index[n.id];
+        n.setPos(new $jit.Complex(nd.data.startx, nd.data.starty));
+    });
+    fd.plot();
+
+    if (fd.canvas.translateHandler) {
+        fd.canvas.translateHandler(0,0);
+    }
+};
+
+var Loader = {};
+Loader.parseHash = function() {
+    var url = location.href;
+    var hasharr = url.split("#");
+    if (hasharr.length > 1) {
+        hasharr = hasharr[1].split(".");
+    } else {
+        hasharr = [];
+    }
+
+    var retd = {
+        "problem": hasharr[0],
+        "mode": hasharr[1]
+    };
+    return retd;
+}
+Loader.parseQuery = function() {
+    var url = location.href;
+    var qindex = url.indexOf("?"); 
+    var resd = {};
+    if (qindex > -1) {
+        url = url.substring(qindex+1);
+        var hindex = url.indexOf("#");
+        if (hindex > -1) {
+            url = url.substring(0, hindex);
+        }
+        var parts = url.split("&");
+        for (var i = 0; i < parts.length; ++i) {
+            var p = parts[i];
+            var eqdx = p.indexOf("=");
+            if (eqdx > -1) {
+                resd[p.substring(0,eqdx)] = p.substring(eqdx+1);
+            } else {
+                resd[p] = true;
+            }
+        }
+    }
+    return resd;
+}
+window.onhashchange = function() {
+    var hash = Loader.parseHash();
+    if (hash.problem) {
+        loadProblem(hash.problem);
+        var taskdx = $.inArray(hash.problem,Tasks.ALL);
+        if (taskdx > -1) {
+            Tasks.current = taskdx;
+        }
+    }
+    if (hash.mode) {
+        Mode.change("rad-mode-" + hash.mode);
+    }
+}
+
+var resizeTimeout = 0;
+$(window).resize(function() {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(function() {
+        if (fd && fd.canvas) {
+            fd.canvas.resize($(window).width(), $(window).height());
+            reYplot();
+        }
+    },100);
+});
+
+function loadProblem(name) {
+    var thedir = "graphs/" + name + "/out";
+    RFGraph.setdir(thedir);
+
+    getgraph("index", function(dta) {
+        dta.shift();
+
+        var cont = $("#grlist");
+        var availh = cont.height();
+        var totalh = 0;
+        $.each(dta, function(dx,el) {
+            totalh += el.cost;
+        });
+        heights = $.map(dta, function(el,dx) {
+            return Math.floor(el.cost/totalh * availh);
+        });
+
+        cont.empty();
+        for (var i = 0; i < dta.length; ++i) {
+            var prec = dta[i].precursor;
+            var mut = dta[i].id;
+
+            //handle the precursor/mutation list selection logic
+            var item = $("<li></li>");
+            cont.append(item);
+            //"every other" color
+            var eocol = (i % 2 * 50);
+            //color for structural mutations vs everything else
+            var col = dta[i].type == "Structural mutation" ? 0 : 150;
+            item
+            //.text(prec + "/" + mut)
+            .height(heights[i])
+            .css({
+                "background-color":"rgb(" + col + "," + col + "," + col + ")"
+            })
+            .data("prec", prec)
+            .data("mut", mut)
+            .click(function() {
+                var elt = this;
+                if (prevsel != null) {
+                    $(prevsel).removeClass("sel");
+                }
+                $(elt).addClass("sel");
+                prevsel = elt;
+                
+                var tprec = $(elt).data("prec");
+                var tmut = $(elt).data("mut");
+                RFGraph.loadgraph(tprec, tmut, function(result) {
+                    var gres = result.gres;
+                    graph = gres;
+                    //show in jit display
+                    var combined = RFGraph.parallelLines(gres, result.copymut, result.samemap);
+                    var toshow = combined;
+                    fd.loadJSON(toshow.parsed);
+                    
+                    //compute overall info
+                    showInfo(result.origpre,result.origmut);
+                    //histogram
+                    var boundsf = Histogram.findBounds(gres, Histogram.KF_LOGF);
+                    var boundst = Histogram.findBounds(gres, Histogram.KF_LOGT);
+                    var boundsd = Histogram.findBounds(gres, Histogram.KF_LOGD);
+                    var netbnds = {
+                        min: Math.min.apply(Math, [boundsf.min, boundst.min, boundsd.min]),
+                        max: Math.max.apply(Math, [boundsf.max, boundst.max, boundsd.max])
+                    };
+                    var binsf = Histogram.compute(gres,Histogram.KF_LOGF,netbnds,200);
+                    var binst = Histogram.compute(gres,Histogram.KF_LOGT,netbnds,200);
+                    var binsd = Histogram.compute(gres,Histogram.KF_LOGD,netbnds,200);
+                    $.plot($("#cdf-plot"), [
+                        {
+                            data: Histogram.normalize(Histogram.cumsum(binsf)),
+                            lines: {show:true, fill: true},
+                            label: "before"
+                        },
+                        {
+                            data: Histogram.normalize(Histogram.cumsum(binst)),
+                            lines: {show: true, fill: true},
+                            label: "after"
+                        },
+                        {
+                            data: Histogram.normalize(Histogram.cumsum(binsd)),
+                            lines: {show: true, fill: false},
+                            label: "diff"
+                        }                        
+                    ],{
+                        xaxes: [{
+                                //transform: function (v) { return v; return Math.log(v); },
+                                //inverseTransform: function(v) { return Math.exp(v); },
+                                tickFormatter: function(val, axis) {
+                                    var pfx = "";
+                                    if (val < 0) {
+                                        pfx = "-";
+                                        val = -val;
+                                    }
+                                    return pfx + Histogram.DELOG(val).toFixed(axis.tickDecimals) + "&mu;s";
+                                },
+                                tickDecimals: 0,
+                                ticks: [netbnds.min, 0, 1,2,3,4]
+                            }],
+                        legend: {
+                            show: true,
+                            position: "nw"
+                        }
+                    });
+
+                    //find maximum start y
+                    var maxy = 0;
+                    for (var i = 0; i < toshow.parsed.length; ++i) {
+                        maxy = Math.max(toshow.parsed[i].data.starty, maxy);
+                    }
+                    sbar.setMax(maxy); // + $(window).height()/2
+
+                    compute();
+
+                    if (Mode.isEnabled("grader")) {
+                        //$("#anno-btnmark-cont").css("display","none");
+                        //$("#rad-mark").css("display","none");
+                        $("#anno-grader-cont").css("display","block");
+                        grader.show(thedir);
+                    }
+
+                    setTimeout(finalplot, 20);
+                });
+            });
+            
+            if (i == 0) {
+                item.click();
+            }
+        }
+    });
+}
+
+/**
+ * prei: precursor info string
+ * muti: mutation info string
+ */
+function showInfo(gpre,gmut) {
+    var findinfo = function(lst) {
+        for (var i = 0; i < lst.length; ++i) {
+            if (lst[i].id == 1) {
+                return lst[i];
+            }
+        }
+        return null;
+    };
+    var prei = findinfo(gpre.nodes);
+    var muti = findinfo(gmut.nodes);
+    $("#summary-cont").empty();
+    if (prei == null || muti == null) {
+        return;
+    } else {
+        prei = prei.label;
+        muti = muti.label;
+    }
+    var dictize = function(s) {
+        var lst = s.split("\n");
+        var dct = {};
+        for (var i = 0; i < lst.length; ++i) {
+            var sei = lst[i].split(":");
+            if (sei.length > 1) {
+                dct[sei[0]] = sei[1].substring(1);
+            }
+        }
+        return dct;
+    };
+    var pred = dictize(prei);
+    var mutd = dictize(muti);
+    var pullpre = (pred["Cluster ID"] == mutd["Cluster ID"]) ? mutd : pred;
+
+    var fieldIfExist = function(name) {
+        var str = "";
+        if (pullpre[name]) {
+            str += pullpre[name].split(";")[0];
+        }
+        str += " / ";
+        if (mutd[name]) {
+            str += mutd[name].split(";")[1];
+        }
+        return str;
+    };
+
+    var info = [];
+    info.push({
+        "label": "Average Response Time",
+        "text": fieldIfExist("Avg. response times")
+    });
+    info.push({
+        "label": "&sigma; Response Time",
+        "text": fieldIfExist("Standard Deviations")
+    });
+    info.push({
+        "label": "Requests",
+        "text": fieldIfExist("requests")
+    });
+    info.push({
+        "label": "Cluster ID",
+        "text": pred["Cluster ID"] + " / " + mutd["Cluster ID"] 
+    });
+    info.push({
+        "label": "# Nodes",
+        "text": gpre.nodes.length + " / " + gmut.nodes.length
+    })
+
+    $("#summary-cont").empty();
+    for (var i = 0; i < info.length; ++i) {
+        $("#summary-cont").append(
+            $("<div>")
+                .append($("<span>").html(info[i].label))
+                .append($("<span>").css({
+                    "font-weight": "bold",
+                    "margin-left": "5px"
+                }).html(info[i].text))
+        );
+    }
+}
+
+function init() {
+    var NODES_EVENTABLE = true;
+    
+    var query = Loader.parseQuery();
+    //turn on developer mode if flag is specified.
+    if (query.devmode) {
+        Mode.setEnabled("devmode",true);
+    }
+
+    fd = new $jit.ForceDirected({
+        injectInto: "grapharea",
+        Navigation: {
+          enable: true,
+          //panning: 'avoid nodes',
+          panning: !MOUSE_DRAGS,
+          zooming: 200 //zoom speed
+        },
+        Node: {
+          overridable: true,
+          color: "#000",
+          type: 'rf-node', //"square" "circle"
+          dim: 15
+        },
+        Edge: {
+          overridable: true,
+          color: '#000',
+          lineWidth: 2.0,
+          type: "label-line"
+        },
+        Label: {
+          type: 'Native',
+          size: 10,
+          color: '#000',
+          style: 'bold'
+        },
+        Tips: {
+          type: 'Native',
+          enable: false,
+          offsetX: 10,
+          offsetY: 10,
+          onShow: function(tip, node) {
+            tip.innerHTML = node.name;
+          }
+        },
+        onBeforeCompute: function() {
+           fd.graph.eachNode(function (n) {
+            //n.pos.setc(n.data.startx,n.data.starty);
+            n.setPos(new $jit.Complex(n.data.startx, n.data.starty));
+           });
+        },
+        onAfterPlot: function(canvas) {
+            var alpha = 1;
+            if (!SHOWBOTH && !SHOWSBS) {
+                alpha = FRACTO;
+            }
+            anno.draw(canvas, alpha);
+        },
+        Events: {
+          enable: NODES_EVENTABLE,
+          onMouseEnter: function(node, eventInfo, e) {
+            fd.canvas.getElement().style.cursor = 'pointer';
+            
+            //no tooltips for now
+            /*
+            $("#cont-tip").css({
+                left: e.offsetX-($("#cont-tip").width()/2),
+                top: e.offsetY-($("#cont-tip").height()/2)
+            }).attr({
+                title: node.name
+            }).cluetip({
+                cluetipClass: "jtip",
+                splitTitle: "|",
+                positionBy: "bottomTop",
+                arrows: true,
+                dropShadow: true,
+                dropShadowSteps: 30,
+                hoverIntent: false,
+                sticky: false,
+                mouseOutClose: false,
+                closePosition: "title",
+                closeText: "x" //'<img src="css/logo.png" alt="close" />'
+            });
+            */
+          },
+          onMouseLeave: function() {
+            fd.canvas.getElement().style.cursor = '';
+            $(document).trigger("hideCluetip");
+          },
+          onDragMove: function(node, eventInfo, e) {
+              if (!MOUSE_DRAGS) {
+                return false;
+              }
+
+              var pos = eventInfo.getPos();
+              node.pos.setc(pos.x, pos.y);
+              fd.plot();
+          },
+          //Implement the same handler for touchscreens
+          onTouchMove: function(node, eventInfo, e) {
+            $jit.util.event.stop(e); //stop default touchmove event
+            this.onDragMove(node, eventInfo, e);
+          },
+          onClick: function(node, eventInfo, e) {
+            anno.hide();
+            if(!node) return;
+            var fulldesc = "|path length before: " + node.data.critpf + "&micro;s" + 
+                    "|path length after: " + node.data.critpt + "&micro;s" + 
+                    "|machine id: " + node.data.nodeid +
+                    "|t id: " + node.data.threadid;
+          },
+          onRightClick: function(node, eventInfo, e) {
+            var pos = eventInfo.getPos();
+            anno.showAt(e.pageX, e.pageY, pos);
+          }
+        },
+        iterations: 0,
+        levelDistance: 0.1
+    });
+    fd.canvas.translateHandler = function(dx,dy) {
+        var sc = fd.canvas.scaleOffsetY;
+        var xt = fd.canvas.translateOffsetX;
+        var winwidth = $(window).width();
+        //expected graph left pos (TODO: make this be based on actual loaded graph)
+        var mingrl = -100;
+        var maxgrl = 500;
+        //scale by sc
+        mingrl *= sc;
+        maxgrl *= sc;
+        //distance out of bounds
+        var minthresh = -(winwidth/4 + maxgrl);
+        var maxthresh = winwidth/4 - mingrl;
+        var delta = 0;
+        if (xt < minthresh) {
+            //denominator controls strength of rubberbanding
+            delta = (minthresh-xt)/8;
+        } else if (xt > maxthresh) {
+            delta = (maxthresh-xt)/8;
+        }
+        if (delta != 0) {
+            setTimeout(function() {
+                fd.canvas.translate(delta/sc, 0);
+                fd.canvas.translateHandler(delta/sc, 0);
+            }, 40);
+        }
+
+        sbar.setVal(-fd.canvas.translateOffsetY / sc);
+    };
+    fd.canvas.scaleHandler = function(delta) {
+        var winheight = $(window).height();
+        var sc = fd.canvas.scaleOffsetY;
+        //apply rubberbanding
+        var maxthresh = 2.5;
+        var minthresh = winheight / sbar.getMax() * 2/3;
+        var delta = 1;
+        if (sc > maxthresh) {
+            //denominator controls strength of rubberbanding
+            delta = 1 - Math.abs(sc - 1)/100; //.98;
+        } else if (sc < minthresh) {
+            delta = 1 + Math.abs(1/sc)/100;
+        }
+        if (delta != 1) {
+            setTimeout(function() {    
+                fd.canvas.scale(delta, delta);
+                fd.canvas.scaleHandler(delta);
+            }, 40);
+        }
+
+        sbar.setVal(-fd.canvas.translateOffsetY / sc);
+        sbar.setViewable(winheight / sc);
+    };
+
+    //initialize "precursor / mutation" visibility slider
+    $("#fromtoslide").slider({
+        value: 100,
+        orientation: "horizontal",
+        range: "min",
+        animate: 200,
+        change: function(evt, ui) {
+            computeSlide(ui.value);
+            reYplot();
+        },
+        stop: function(evt, ui) {
+            if (anno) {
+                anno.markStr("animate", "drop@" + ui.value);
+            }
+        }
+    });
+    
+    //initialize blink comparator button
+    $("#btn-blink").button({
+        icons: { primary: "ui-icon-play" }
+    }).click(function() {
+        var start = $(this).text() == "start";
+        if (anno) {
+            anno.markStr("animate", start ? "start" : "stop");
+        }
+        var opts = {
+            label: start ? "stop" : "start",
+            icons: { primary: start ? "ui-icon-stop" : "ui-icon-play" }
+        };
+        $(this).button("option", opts);
+        if (start) {
+            setslide($("#fromtoslide").slider("value"));
+        } else {
+            //snap to ends when sliding stops
+            var curv = $("#fromtoslide").slider("value");
+            var newv = 0;
+            if (curv >= 50) {
+                newv = 100;
+            }
+            $("#fromtoslide").slider("value", newv);
+        }
+    }).data("dir","asc");
+    
+    //initialize move/sel buttons
+    //we need to toggle fd.config.Navigation.panning betwixt 'avoid nodes' and false
+    $("#btn-move").button({
+        icons: { primary: "ui-icon-arrow-4-diag" }
+    }).click(function() {
+        var ismov = $(this).text() == "move";
+        var opts = {
+            label: ismov ? "select" : "move",
+            icons: { primary: ismov ? "ui-icon-search" : "ui-icon-arrow-4-diag"}
+        };
+        $(this).button("option", opts);
+        fd.config.Navigation.panning = ismov ? false : "avoid nodes";
+        setnavsel(ismov);
+    });
+    $("#seloverlay").mousemove(function(evt) {
+        return true;
+    });
+
+    sbar = new Scrollbar("#scroll-cont", "#scrollbtn", function(val, delta) {
+        fd.canvas.translate(0,-delta);
+    });
+
+    anno = new Annotate("#annotate-cont","#btn-annotate","rad-mark");
+    
+    Mode.init(function(modeid) {
+        anno.markStr("modeChange", modeid);
+    });
+
+    window.oncontextmenu = function(evt) {
+        return false;
+    };
+
+    Tasks.init();
+
+    var hash = Loader.parseHash();
+    if (hash.problem) {
+        $("#sel-problem").attr("value", hash.problem);
+    }
+    if (hash.mode) {
+        Mode.change("rad-mode-" + hash.mode);
+    }
+    loadProblem($("#sel-problem").attr("value"));
+    $("#sel-problem").change(function(e) {
+        var probname = $(this).attr("value");
+        loadProblem(probname);
+    });
+
+    grader = new Grader("#inp-grader","#btn-gradergo", anno, 
+        "#btn-grade-ok","#btn-grade-fp","#btn-grade-fn");
+}
+
+Tasks = {};
+Tasks.ALL = ["training","task2","task3","task5","postmark_large_10","mds_prefetch_10","training","task2","task5"];
+Tasks.switchfn = function(dx,oldtask,newtask) {
+    if (dx > 3 && newtask == "training") {
+        //switch UI modes
+        //rad-mode-side, rad-mode-diff, rad-mode-anim
+        if (Mode.getCurrent() == "rad-mode-side") {
+            Mode.change("rad-mode-diff");
+        } else {
+            Mode.change("rad-mode-side");
+        }
+    }
+};
+Tasks.current = 0;
+Tasks.init = function() {
+    $("#btn-tasknext").button({
+        icons: {primary: "ui-icon-seek-next"}
+    }).click(function() {
+        ++Tasks.current;
+        if (Tasks.current >= Tasks.ALL.length) {
+            alert("That's all - thanks for participating!");
+            return;
+        } else {
+            Tasks.switchfn(Tasks.current, Tasks.ALL[Tasks.current - 1], Tasks.ALL[Tasks.current]);
+        }
+        anno.markStr("taskChange");
+        anno.clearShown();
+
+        var sx = fd.canvas.scaleOffsetX, sy = fd.canvas.scaleOffsetY;
+        var tx = fd.canvas.translateOffsetX, ty = fd.canvas.translateOffsetY;
+        var dx = -tx / sx, dy = -ty / sy;
+        fd.canvas.translate(dx, dy);
+        if (fd.canvas.translateHandler) {
+            fd.canvas.translateHandler(dx, dy);
+        }
+        loadProblem(Tasks.ALL[Tasks.current]);
+    });
+}
+
+
+var setslide = function(val, force) {
+    var isStopped = $("#btn-blink").text() != "stop";
+    if (!force && isStopped) {
+        return;
+    }
+
+    var INC = 2;
+    var delay = 40;
+    $("#fromtoslide").slider("value", val);
+    var bbtn = $("#btn-blink");
+    var nval = (bbtn.data("dir") == "asc") ? val + INC : val - INC;
+    if (nval > 100) {
+        bbtn.data("dir", "desc");
+        nval = 100;
+        delay = 3000;
+    } else if (nval < 0) {
+        nval = 0;
+        bbtn.data("dir", "asc");
+        delay = 3000;
+    }
+
+    reYplot();
+    if (!isStopped) {
+        setTimeout(setslide, delay, nval);
+    }
+}
+var computeSlide = function(val) {
+    //frac: 0  0.5 1
+    //from: 1  1   0
+    //to:   0  1   1
+    var frac = val / 100.0;
+    FRACFROM = Math.min((1.0-frac)*2.0,1.0);
+    FRACTO = Math.min(frac*2.0,1.0);
+}
+
+SEL_ON = false;
+SEL_LEFT = 0;
+SEL_TOP = 0;
+SEL_REL_LEFT = 0;
+SEL_REL_TOP = 0;
+SEL_REL_W = 0;
+SEL_REL_H = 0;
+var setnavsel = function(/**bool*/ turnon) {
+    var canv = $("#grapharea-canvas");
+    var overlayf = function() { return $("#seloverlay"); }
+    overlayf.onselectstart = function() {return false;}
+    canv.bind("mousedown.ours", function(evt) {
+        SEL_LEFT = evt.offsetX;
+        SEL_TOP = evt.offsetY;
+        overlayf().css({
+            display: "block",
+            left: SEL_LEFT,
+            top: SEL_TOP,
+            width: 0,
+            height: 0
+        });
+        SEL_ON = true;
+        return false;
+    });
+    var f = function(evt) {
+        overlayf().css({
+            display: "none"
+        });
+        
+        var ex = evt.offsetX;
+        var ey = evt.offsetY;
+        //adjust for mouseup inside the overlay
+        if (evt.target == overlayf()[0]) {
+            ex += SEL_LEFT;
+            ey += SEL_TOP;
+        }
+        var ox = fd.canvas.translateOffsetX;
+        var oy = fd.canvas.translateOffsetY;
+        var sx = fd.canvas.scaleOffsetX;
+        var sy = fd.canvas.scaleOffsetY;
+        //we care about fd.canvas.{scale,translate}offset{X,Y}
+        // see MouseEventsManager.makeEventObject for the mysterious
+        //  offset of fd.canvas.getSize()
+        SEL_REL_LEFT = (SEL_LEFT - fd.canvas.getSize().width/2 - ox) / sx;
+        SEL_REL_TOP = (SEL_TOP - fd.canvas.getSize().height/2 - oy) / sy;
+        SEL_REL_W = (ex - SEL_LEFT) / sx;
+        SEL_REL_H = (ey - SEL_TOP) / sy;
+        //SEL_REL_LEFT = fd.canvas.offsetX + fd.canvas.scaleX * ex;
+        //SEL_REL_TOP = fd.canvas.offsetY + fd.canvas.scaleY * ey;
+        //SEL_REL_W = fd.canvas.scaleX * (ex - SEL_LEFT);
+        //SEL_REL_H = fd.canvas.scaleY * (ey - SEL_TOP);
+        
+        var sumwtf = 0;
+        var sumwtt = 0;
+        
+        for (var en in fd.graph.edges) {
+            var e = fd.graph.edges[en];
+            
+            //there are two (duplicate) edges on each object
+            var first = true;
+            for (var suben in e) {
+                if (first) {
+                    first = false;
+                    var sube = e[suben];
+                    var p1 = sube.nodeFrom.pos.getc(true);
+                    var p2 = sube.nodeTo.pos.getc(true);
+                    if (p1.x > SEL_REL_LEFT && p1.x < SEL_REL_LEFT + SEL_REL_W &&
+                        p1.y > SEL_REL_TOP && p1.y < SEL_REL_TOP + SEL_REL_H &&
+                        p2.x > SEL_REL_LEFT && p2.x < SEL_REL_LEFT + SEL_REL_W &&
+                        p2.y > SEL_REL_TOP && p2.y < SEL_REL_TOP + SEL_REL_H) {
+                        if (sube.data.weightf) {
+                            sumwtf += sube.data.weightf;
+                        }
+                        if (sube.data.weightt) {
+                            sumwtt += sube.data.weightt;
+                        }
+                    }
+                }
+            }
+        }
+        
+        $("#txt-sumwt").text(sumwtf + " / " + sumwtt + " ms");
+        
+        fd.plot();
+    }
+    canv.unbind("mouseup.ours");
+    overlayf().unbind("mouseup.ours");
+    canv.bind("mouseup.ours", f);
+    overlayf().bind("mouseup.ours", f);
+    canv.bind("mousemove.ours", function(evt) {
+        overlayf().css({
+            width: evt.offsetX - SEL_LEFT,
+            height: evt.offsetY - SEL_TOP
+        });
+    });
+    overlayf().bind("mousemove.ours", function(evt) {
+        overlayf().css({
+            width: evt.offsetX,
+            height: evt.offsetY
+        })
+    });
+    if (!turnon) {
+        canv.unbind("mousedown.ours");
+        canv.unbind("mouseup.ours");
+        canv.unbind("mousemove.ours");
+    }
+}
+
+var prevsel = null;
+//scroll bar
+var sbar = null;
+//annotator
+var anno = null;
+//grader
+var grader = null;
+
+var FRACFROM = 1.0;
+var FRACTO = 1.0;
+var SHOWBOTH = false;
+var SHOWSBS = false; //show side-by-side?
+var MINEDGESEL = 0;
+var MAXEDGESEL = 1e10;
+
+function compute() {
+    fd.computeIncremental({
+        iter: 0,
+        property: ['current'],
+        onStep: function(perc){
+          //fd.plot();
+          //display progress
+          //Util.info(perc + '% loaded...');
+        },
+        onComplete: function(){
+          /*
+          Util.info('done');
+          fd.animate({
+            modes: ['linear'],
+            transition: $jit.Trans.Elastic.easeOut,
+            duration: 1500
+          });
+          */
+          finalplot();
+        }
+      });
+}
+
+function finalplot() {
+    //XXX: hack to get around the first incremental layout step
+    for (nn in fd.graph.nodes) {
+        var n = fd.graph.nodes[nn];
+        if (n.data.startx == 0 && n.data.starty == 0) {
+            n.setPos(new $jit.Complex(0, 0));
+        }
+    }
+    reYplot();
+    //fd.plot();
+}
+</script>
+
+</head>
+<body onload="init()">
+
+<div id="cont">
+    <div id="help-cont">
+        <b>Guide</b>
+        <div>Click <b>"next task"</b> to go to the next graph</div>
+        <div>Select a <b>mode</b> (side-by-side/diff/animation)</div>
+        <div>Pan by dragging, zoom with the mouse wheel</div>
+    </div>
+    <div id="grapharea">
+    
+    </div>
+</div>
+
+<div id="info-cont" class="uiblock">
+    <div id="opts-cont">
+        <button id="btn-move" style="margin: 7px 0px 0px 7px;">move</button>
+        <span style="margin:7px 7px 0px 0px;font-size:1.2em;">
+            &Sigma;(selected) = <span id="txt-sumwt"><i>(not in select mode)</i></span>
+        </span>
+    </div>
+    <div id="summary-cont" style="margin: 7px 7px 7px 12px">
+
+    </div>
+</div>
+
+<div id="cdf-cont" class="uiblock">
+    <div id="cdf-plot" style="width:250px;height:250px">
+
+    </div>
+</div>
+
+<div id="uimode-cont" class="uiblock">
+    <div id="mode-sel-cont">
+        <input type="radio" name="rad-mode" id="rad-mode-side"/><label for="rad-mode-side">Side-by-Side</label>
+        <input type="radio" name="rad-mode" id="rad-mode-diff" checked="checked"/><label for="rad-mode-diff">Diff</label>
+        <input type="radio" name="rad-mode" id="rad-mode-anim"/><label for="rad-mode-anim">Animation</label>
+    </div>
+</div>
+
+<div id="slider-cont" class="uiblock">
+    <div id="slider-innercont" style="float:left;position:relative;top:4px">
+        <div style="position:absolute;left:8px;top:0px;">before</div>
+        <div style="position:absolute;right:8px;top:0px;">after</div>
+        <!--
+        <div style="position:absolute;left:50%;width:60px;margin-left:-30px;top:0px;text-align:center;"><input type="checkbox" id="bothchk"/>diff</div>
+        -->
+        <div id="fromtoslide" style="width:300px; margin: 20px;">
+        
+        </div>        
+    </div>
+    <button id="btn-blink" style="float:left;margin:8px 8px 0px 8px;">start</button>
+</div>
+
+<div id="grlist-cont" class="uiblock">
+    <div id="cont-sel-problem">
+        <select id="sel-problem">
+            <option value="iozone_mws">IOzone</option>
+            <option value="mds_prefetch_10">Prefetch 10</option>
+            <option value="mds_prefetch_50">Prefetch 50</option>
+            <option value="postmark_large_10">MDS Config</option>
+            <option value="mdsconfig">mdsconfig</option>
+            <option value="hadoop">Hadoop</option>
+            <option value="hadoop_compressed">Hadoop Cmp</option>
+            <option value="spectroscope_1ms">1ms Spin</option>
+            <option value="spectroscope_10us">10us Spin</option>
+            <option value="spectroscope_500us">500us Spin</option>
+            <option value="task1">Task 1</option>
+            <option value="task2">Task 2</option>
+            <option value="task3">Task 3</option>
+            <option value="task4">Task 4</option>
+            <option value="task5">Task 5</option>
+            <option value="training" selected="selected">Training</option>
+        </select>
+    </div>
+    <ol id="grlist">
+    
+    </ol>
+</div>
+
+<div id="legend-cont" class="uiblock">
+    <span id="legend-before">Before</span>
+    <span id="legend-after">After</span>
+</div>
+
+<div id="devmode-cont" class="uiblock">
+    <button id="btn-devmode">Developer</button>
+</div>
+
+<div id="tasksel-cont" class="uiblock">
+    <button id="btn-tasknext">Next Task</button>
+</div>
+
+<div id="grader-cont" class="uiblock">
+    Evaluate answers for: <input type="text" id="inp-grader" value="realuser/students/8641.txt" /><button id="btn-gradergo">Go</button>
+</div>
+
+<div id="scroll-cont">
+    <div id="scrollbtn"></div>
+</div>
+
+<div id="diagram-cont">
+    <img src="css/system-diagram.png" alt="" width="350" />
+</div>
+
+<div id="annotate-cont" class="uiblock" style="visibility:hidden;">
+    <div id="anno-grader-cont" style="display:none;margin:6px">
+        <button id="btn-grade-ok">OK</button>
+        <button id="btn-grade-fp">FP</button>
+        <button id="btn-grade-fn">FN</button>
+        <hr/>
+    </div>
+    <div id="anno-btnmark-cont"><button id="btn-annotate" style="width:230px;margin:6px;">Mark</button></div>
+    <div id="rad-mark">
+        <input type="radio" id="q1" name="rad-mark" value="q1" checked="checked"/>
+            <label for="q1">Statistically Significant</label>
+        <br/>
+        <input type="radio" id="q2" name="rad-mark" value="q2"/>
+            <label for="q2">Latency Change</label>
+        <br/>
+        <input type="radio" id="q3" name="rad-mark" value="q3"/>
+            <label for="q3">Structural Change</label>
+        <br/>
+        <input type="radio" id="q4" name="rad-mark" value="q4"/>
+            <label for="q4">Most Impact</label>
+        <br/>
+        <input type="radio" id="unmark" name="rad-mark" value="unmark"/>
+            <label for="unmark"><i>Un-mark</i></label>
+    </div>
+    <hr/>
+    <div><button id="btn-anno-represent" style="width:230px;margin:6px;">What Changes Represent</button></div>
+    <div><button id="btn-anno-interesting" style="width:230px;margin:6px;">Interesting/Problematic</button></div>
+</div>
+
+<div id="seloverlay" style="display:none;">
+    
+</div>
+
+<div id="cont-tip" class="jt" title="Test|Foo|Bar" style="position:absolute;width:200px;height:20px;left:-300px;top:-300px;">
+
+</div>
+
+<!--
+<script src="largest_2of2.json">
+</script>
+<script src="hadoop10.json">
+</script>
+<script src="114615.json">
+</script>
+<script src="mdsconfig-precursor.json">
+</script>
+<script src="mdsconfig-mutation.json">
+</script>
+<script src="mdsconfig976-both.json">
+</script>
+<script src="mdsconfig976-both.json">
+</script>
+-->
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+{
+  "nodes": [
+    {
+      "id": "10245410393245710.10245410393469735", 
+      "label": "e10__t3__NFS_DIRCACHE_CALL_TYPE\nDEFAULT"
+    }, 
+    {
+      "id": "10245410393245710.10245410393246437", 
+      "label": "e10__t3__NFS3_LOOKUP_CALL_TYPE\nDEFAULT"
+    }, 
+    {
+      "fontcolor": "blue", 
+      "shape": "plaintext", 
+      "id": "1", 
+      "label": "Cluster ID: 240\nSpecific Mutation Type: Structural mutation\nCost: 0\nOverall Mutation Type: Structural_Mutation\nCandidate originating clusters: \n\nAvg. response times: 132 us ; 139 us\nStandard Deviations: 49 us ; 48 us\nKS-Test2 P-value: 1.000\nCluster likelihood: 0.0071 ; 0.0083\nPercent makeup: 46 / 54\nrequests: 502 ; 583"
+    }, 
+    {
+      "id": "10245410393245710.10245410393649630", 
+      "label": "e10__t3__MDS_GETATTR_REPLY_TYPE\nDEFAULT"
+    }, 
+    {
+      "id": "10245410393245710.10245410393538157", 
+      "label": "e10__t3__NFS_CACHE_BLOCK_OP_TYPE\nNFSCACHE_READ_HIT"
+    }, 
+    {
+      "id": "10245410393245710.10245410393633700", 
+      "label": "e10__t3__MDS_GETATTR_CALL_TYPE\nDEFAULT"
+    }, 
+    {
+      "id": "10245410393245710.10245410393659020", 
+      "label": "e10__t3__NFS3_LOOKUP_REPLY_TYPE\nDEFAULT"
+    }, 
+    {
+      "id": "10245410393245710.10245410393604517", 
+      "label": "e10__t3__NFS_DIRCACHE_REPLY_TYPE\nNFSDIRCACHE_READ_MISS"
+    }
+  ], 
+  "edges": [
+    {
+      "color": "black", 
+      "to": "10245410393245710.10245410393469735", 
+      "from": "10245410393245710.10245410393246437", 
+      "label": "p:1.00\n   a: 68us / 73us\n   s: 36us / 37us"
+    }, 
+    {
+      "color": "black", 
+      "to": "10245410393245710.10245410393604517", 
+      "from": "10245410393245710.10245410393538157", 
+      "label": "p:1.00\n   a: 22us / 23us\n   s: 9us / 8us"
+    }, 
+    {
+      "color": "black", 
+      "to": "10245410393245710.10245410393659020", 
+      "from": "10245410393245710.10245410393649630", 
+      "label": "p:1.00\n   a: 4us / 4us\n   s: 1us / 1us"
+    }, 
+    {
+      "color": "black", 
+      "to": "10245410393245710.10245410393649630", 
+      "from": "10245410393245710.10245410393633700", 
+      "label": "p:1.00\n   a: 7us / 7us\n   s: 1us / 1us"
+    }, 
+    {
+      "color": "black", 
+      "to": "10245410393245710.10245410393538157", 
+      "from": "10245410393245710.10245410393469735", 
+      "label": "p:1.00\n   a: 23us / 24us\n   s: 9us / 8us"
+    }, 
+    {
+      "color": "black", 
+      "to": "10245410393245710.10245410393633700", 
+      "from": "10245410393245710.10245410393604517", 
+      "label": "p:1.00\n   a: 8us / 8us\n   s: 2us / 2us"
+    }
+  ]
+}

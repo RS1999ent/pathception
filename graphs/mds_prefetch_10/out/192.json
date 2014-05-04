@@ -1,0 +1,56 @@
+{
+  "nodes": [
+    {
+      "id": "10245395910043620.10245395910277672", 
+      "label": "e10__t3__NFS3_LOOKUP_REPLY_TYPE\nDEFAULT"
+    }, 
+    {
+      "fontcolor": "blue", 
+      "shape": "plaintext", 
+      "id": "1", 
+      "label": "Cluster ID: 192\nSpecific Mutation Type: Originating cluster\nCost: 0\nOverall Mutation Type: Originating_Cluster\nCandidate originating clusters: \n\nAvg. response times: 137 us ; 141 us\nStandard Deviations: 36 us ; 38 us\nKS-Test2 P-value: 1.000\nCluster likelihood: 0.0314 ; 0.0309\nPercent makeup: 50 / 50\nrequests: 2210 ; 2177"
+    }, 
+    {
+      "id": "10245395910043620.10245395910251295", 
+      "label": "e10__t3__NFS_DIRCACHE_REPLY_TYPE\nNFSDIRCACHE_READ_MISS"
+    }, 
+    {
+      "id": "10245395910043620.10245395910187642", 
+      "label": "e10__t3__NFS_CACHE_BLOCK_OP_TYPE\nNFSCACHE_READ_HIT"
+    }, 
+    {
+      "id": "10245395910043620.10245395910111862", 
+      "label": "e10__t3__NFS_DIRCACHE_CALL_TYPE\nDEFAULT"
+    }, 
+    {
+      "id": "10245395910043620.10245395910044130", 
+      "label": "e10__t3__NFS3_LOOKUP_CALL_TYPE\nDEFAULT"
+    }
+  ], 
+  "edges": [
+    {
+      "color": "black", 
+      "to": "10245395910043620.10245395910251295", 
+      "from": "10245395910043620.10245395910187642", 
+      "label": "p:1.00\n   a: 25us / 25us\n   s: 6us / 6us"
+    }, 
+    {
+      "color": "black", 
+      "to": "10245395910043620.10245395910187642", 
+      "from": "10245395910043620.10245395910111862", 
+      "label": "p:1.00\n   a: 26us / 27us\n   s: 6us / 7us"
+    }, 
+    {
+      "color": "black", 
+      "to": "10245395910043620.10245395910277672", 
+      "from": "10245395910043620.10245395910251295", 
+      "label": "p:1.00\n   a: 6us / 6us\n   s: 2us / 2us"
+    }, 
+    {
+      "color": "black", 
+      "to": "10245395910043620.10245395910111862", 
+      "from": "10245395910043620.10245395910044130", 
+      "label": "p:1.00\n   a: 80us / 82us\n   s: 32us / 34us"
+    }
+  ]
+}

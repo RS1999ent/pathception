@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<!--
+Copyright (c) 2014, Carnegie Mellon University.
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions
+are met:
+1. Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+2. Redistributions in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in the
+   documentation and/or other materials provided with the distribution.
+3. Neither the name of the University nor the names of its contributors
+   may be used to endorse or promote products derived from this software
+   without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT
+HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS
+OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED
+AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY
+WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+POSSIBILITY OF SUCH DAMAGE.
+-->
+<head>
+<title>Stringify graph test</title>
+
+<link rel="stylesheet" href="css/styles.css" type="text/css" media="screen">
+<style type="text/css">
+
+</style>
+
+<!-- Libraries -->
+<script language="javascript" type="text/javascript" src="lib/jquery-1.5.2.js"></script>
+<script language="javascript" type="text/javascript" src="lib/jquery-ui-1.8.12.custom.min.js"></script>
+
+<!-- Our JS -->
+<script language="javascript" type="text/javascript" src="js/const.js"></script>
+<script language="javascript" type="text/javascript" src="js/graphutil.js"></script>
+<script language="javascript" type="text/javascript" src="js/rfgraph.js"></script>
+<script language="javascript" type="text/javascript" src="js/sed.js"></script>
+<script language="javascript" type="text/javascript" src="js/util.js"></script>
+
+<script language="javascript" type="text/javascript">
+Util.importTo(Util, window);
+importTo(GraphUtil, window);
+importTo(RFGraph, window);
+
+$(document).ready(function() {
+    //var n1 = "big-mdsconfig-976", n2 = "big-mdsconfig-1004";
+    var n1 = "linear-mdsconfig-312-begin-head4", n2 = "linear-mdsconfig-312-begin";
+    compare(n1, n2, function(g1, g2, diff, samemap) {
+        var gm = RFGraph.mergedGraph(g1, g2, diff, samemap);
+        
+        Util.log("diff is", diff);
+    });
+});
+
+function printcompare(diff) {
+    $.each(diff, function(i, el) {
+        Util.log(el.f ? el.f.name : "-", el.t ? el.t.name : "-");
+    });
+}
+
+function compare(name1, name2, cont) {
+    RFGraph.setdir("graphs/test/basic");
+    loadGraph(name1, function(g1) {
+        loadGraph(name2, function(g2) {
+            var dist = Sed.editDistance(g1, g2);
+            var samemap = Sed.unrollSame(dist.same);
+            
+            cont(g1, g2, dist.diff, samemap);
+        });
+    });
+}
+
+function loadGraph(name, cont) {
+    getgraph(name, function(dta) {
+        var graph = makegraph(dta, {});
+        Sed.sortChildren(graph.index, graph.topnode);
+        var flat = Sed.dfsFlatten({whole: []}, graph.index, graph.topnode);
+        graph.flat = flat.whole;
+        cont(graph);
+    });
+}
+
+</script>
+</head>
+
+<body>
+
+</body>
+</html>

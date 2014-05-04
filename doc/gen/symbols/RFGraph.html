@@ -1,0 +1,869 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		
+		<title>JsDoc Reference - RFGraph</title>
+
+		<style type="text/css">
+			/* default.css */
+body
+{
+	font: 12px "Lucida Grande", Tahoma, Arial, Helvetica, sans-serif;
+	width: 800px;
+}
+
+.header
+{
+	clear: both;
+	background-color: #ccc;
+	padding: 8px;
+}
+
+h1
+{
+	font-size: 150%;
+	font-weight: bold;
+	padding: 0;
+	margin: 1em 0 0 .3em;
+}
+
+hr
+{
+	border: none 0;
+	border-top: 1px solid #7F8FB1;
+	height: 1px;
+}
+
+pre.code
+{
+	display: block;
+	padding: 8px;
+	border: 1px dashed #ccc;
+}
+
+#index
+{
+	margin-top: 24px;
+	float: left;
+	width: 160px;
+	position: absolute;
+	left: 8px;
+	background-color: #F3F3F3;
+	padding: 8px;
+}
+
+#content
+{
+	margin-left: 190px;
+	width: 600px;
+}
+
+.classList
+{
+	list-style-type: none;
+	padding: 0;
+	margin: 0 0 0 8px;
+	font-family: arial, sans-serif;
+	font-size: 1em;
+	overflow: auto;
+}
+
+.classList li
+{
+	padding: 0;
+	margin: 0 0 8px 0;
+}
+
+.summaryTable { width: 100%; }
+
+h1.classTitle
+{
+	font-size:170%;
+	line-height:130%;
+}
+
+h2 { font-size: 110%; }
+caption, div.sectionTitle
+{
+	background-color: #7F8FB1;
+	color: #fff;
+	font-size:130%;
+	text-align: left;
+	padding: 2px 6px 2px 6px;
+	border: 1px #7F8FB1 solid;
+}
+
+div.sectionTitle { margin-bottom: 8px; }
+.summaryTable thead { display: none; }
+
+.summaryTable td
+{
+	vertical-align: top;
+	padding: 4px;
+	border-bottom: 1px #7F8FB1 solid;
+	border-right: 1px #7F8FB1 solid;
+}
+
+/*col#summaryAttributes {}*/
+.summaryTable td.attributes
+{
+	border-left: 1px #7F8FB1 solid;
+	width: 140px;
+	text-align: right;
+}
+
+td.attributes, .fixedFont
+{
+	line-height: 15px;
+	color: #002EBE;
+	font-family: "Courier New",Courier,monospace;
+	font-size: 13px;
+}
+
+.summaryTable td.nameDescription
+{
+	text-align: left;
+	font-size: 13px;
+	line-height: 15px;
+}
+
+.summaryTable td.nameDescription, .description
+{
+	line-height: 15px;
+	padding: 4px;
+	padding-left: 4px;
+}
+
+.summaryTable { margin-bottom: 8px; }
+
+ul.inheritsList
+{
+	list-style: square;
+	margin-left: 20px;
+	padding-left: 0;
+}
+
+.detailList {
+	margin-left: 20px; 
+	line-height: 15px;
+}
+.detailList dt { margin-left: 20px; }
+
+.detailList .heading
+{
+	font-weight: bold;
+	padding-bottom: 6px;
+	margin-left: 0;
+}
+
+.light, td.attributes, .light a:link, .light a:visited
+{
+	color: #777;
+	font-style: italic;
+}
+
+.fineprint
+{
+	text-align: right;
+	font-size: 10px;
+}
+		</style>
+	</head>
+
+	<body>
+<!-- ============================== header ================================= -->	
+		<!-- begin static/header.html -->
+		<div id="header">
+</div>
+		<!-- end static/header.html -->
+
+<!-- ============================== classes index ============================ -->
+		<div id="index">
+			<!-- begin publish.classesIndex -->
+			<div align="center"><a href="../index.html">Class Index</a>
+| <a href="../files.html">File Index</a></div>
+<hr />
+<h2>Classes</h2>
+<ul class="classList">
+	
+	<li><i><a href="../symbols/_global_.html">_global_</a></i></li>
+	
+	<li><a href="../symbols/Const.html">Const</a></li>
+	
+	<li><a href="../symbols/GraphUtil.html">GraphUtil</a></li>
+	
+	<li><a href="../symbols/Histogram.html">Histogram</a></li>
+	
+	<li><a href="../symbols/JitExtend.html">JitExtend</a></li>
+	
+	<li><a href="../symbols/Layout.html">Layout</a></li>
+	
+	<li><a href="../symbols/Mode.html">Mode</a></li>
+	
+	<li><a href="../symbols/RFGraph.html">RFGraph</a></li>
+	
+	<li><a href="../symbols/Sed.html">Sed</a></li>
+	
+	<li><a href="../symbols/Sizebar.html">Sizebar</a></li>
+	
+	<li><a href="../symbols/Util.html">Util</a></li>
+	
+</ul>
+<hr />
+			<!-- end publish.classesIndex -->
+		</div>
+		
+		<div id="content">
+<!-- ============================== class title ============================ -->
+			<h1 class="classTitle">
+				
+				Namespace RFGraph
+			</h1>
+
+<!-- ============================== class summary ========================== -->			
+			<p class="description">
+				
+				
+			
+				Request flow graph functions
+				
+				
+					<br /><i>Defined in: </i> <a href="../symbols/src/js_rfgraph.js.html">rfgraph.js</a>.
+				
+			</p>
+
+<!-- ============================== constructor summary ==================== -->			
+			
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class RFGraph.">
+				<caption>Namespace Summary</caption>
+				<thead>
+					<tr>
+						<th scope="col">Constructor Attributes</th>
+						<th scope="col">Constructor Name and Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="attributes">&nbsp;</td>
+						<td class="nameDescription" >
+							<div class="fixedFont">
+								<b><a href="../symbols/RFGraph.html#constructor">RFGraph</a></b>
+							</div>
+							<div class="description"></div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			
+
+<!-- ============================== properties summary ===================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the fields documented in the class RFGraph.">
+					<caption>Field Summary</caption>
+					<thead>
+						<tr>
+							<th scope="col">Field Attributes</th>
+							<th scope="col">Field Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								RFGraph.<b><a href="../symbols/RFGraph.html#.ROOTDIR">ROOTDIR</a></b>
+								</div>
+								<div class="description">Current root directory for precursor/mutation graphs</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+				
+				
+			
+
+<!-- ============================== methods summary ======================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class RFGraph.">
+					<caption>Method Summary</caption>
+					<thead>
+						<tr>
+							<th scope="col">Method Attributes</th>
+							<th scope="col">Method Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">RFGraph.<b><a href="../symbols/RFGraph.html#.dodiff">dodiff</a></b>(precursor, mutation)
+								</div>
+								<div class="description">Helper for computing the diff between two graphs</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">RFGraph.<b><a href="../symbols/RFGraph.html#.getgraph">getgraph</a></b>(id, cont)
+								</div>
+								<div class="description">Load the graph with the specified id with an XHR</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">RFGraph.<b><a href="../symbols/RFGraph.html#.getReadableName">getReadableName</a></b>(original, eid, tid, lastpart)
+								</div>
+								<div class="description">Get a "human-readable" version of a callpoint label</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">RFGraph.<b><a href="../symbols/RFGraph.html#.loadgraph">loadgraph</a></b>(prec, mut, cont)
+								</div>
+								<div class="description">Load the given precursor/mutation pair into the main window.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">RFGraph.<b><a href="../symbols/RFGraph.html#.makegraph">makegraph</a></b>(graph, options)
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">RFGraph.<b><a href="../symbols/RFGraph.html#.mergedGraph">mergedGraph</a></b>(grf, grt, diff, samemap)
+								</div>
+								<div class="description">Compute the merged graph.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">RFGraph.<b><a href="../symbols/RFGraph.html#.modifyNames">modifyNames</a></b>(g, fn)
+								</div>
+								<div class="description">Modify node IDs in graph g by applying fn(str) -> str
+Modifies g.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">RFGraph.<b><a href="../symbols/RFGraph.html#.walkDiff">walkDiff</a></b>(grf, grt)
+								</div>
+								<div class="description">Internal computation for graph difference between two graphs</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+				
+				
+			
+<!-- ============================== events summary ======================== -->
+			
+
+<!-- ============================== constructor details ==================== -->		
+			
+			<div class="details"><a name="constructor"> </a>
+				<div class="sectionTitle">
+					Namespace Detail
+				</div>
+				
+				<div class="fixedFont">
+						<b>RFGraph</b>
+				</div>
+				
+				<div class="description">
+					
+					
+				</div>
+				
+				
+				
+				
+					
+					
+					
+					
+					
+					
+					
+
+			</div>
+			
+
+<!-- ============================== field details ========================== -->		
+			
+				<div class="sectionTitle">
+					Field Detail
+				</div>
+				
+					<a name=".ROOTDIR"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">RFGraph.</span><b>ROOTDIR</b>
+					
+					</div>
+					<div class="description">
+						Current root directory for precursor/mutation graphs
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					
+				
+			
+
+<!-- ============================== method details ========================= -->		
+			
+				<div class="sectionTitle">
+					Method Detail
+				</div>
+				
+					<a name=".dodiff"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">RFGraph.</span><b>dodiff</b>(precursor, mutation)
+					
+					</div>
+					<div class="description">
+						Helper for computing the diff between two graphs
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{GraphData}</span> <b>precursor</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<span class="light fixedFont">{GraphData}</span> <b>mutation</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".getgraph"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">RFGraph.</span><b>getgraph</b>(id, cont)
+					
+					</div>
+					<div class="description">
+						Load the graph with the specified id with an XHR
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{string}</span> <b>id</b>
+									
+								</dt>
+								<dd>graph id name</dd>
+							
+								<dt>
+									<span class="light fixedFont">{function}</span> <b>cont</b>
+									
+								</dt>
+								<dd>continuation that gets invoked with graph.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".getReadableName"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">RFGraph.</span><b>getReadableName</b>(original, eid, tid, lastpart)
+					
+					</div>
+					<div class="description">
+						Get a "human-readable" version of a callpoint label
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{string}</span> <b>original</b>
+									
+								</dt>
+								<dd>the original label</dd>
+							
+								<dt>
+									<span class="light fixedFont">{int}</span> <b>eid</b>
+									
+								</dt>
+								<dd>the machine identifier</dd>
+							
+								<dt>
+									<span class="light fixedFont">{int}</span> <b>tid</b>
+									
+								</dt>
+								<dd>the "t" identifier (?)</dd>
+							
+								<dt>
+									<span class="light fixedFont">{string}</span> <b>lastpart</b>
+									
+								</dt>
+								<dd>the remaining string</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd>a string that will be displayed in the visualization</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".loadgraph"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">RFGraph.</span><b>loadgraph</b>(prec, mut, cont)
+					
+					</div>
+					<div class="description">
+						Load the given precursor/mutation pair into the main window.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{string}</span> <b>prec</b>
+									
+								</dt>
+								<dd>the precursor name</dd>
+							
+								<dt>
+									<span class="light fixedFont">{string}</span> <b>mut</b>
+									
+								</dt>
+								<dd>the mutation name</dd>
+							
+								<dt>
+									<span class="light fixedFont">{function}</span> <b>cont</b>
+									
+								</dt>
+								<dd>what to run when loaded (gets passed the graphdiff result)</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".makegraph"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">RFGraph.</span><b>makegraph</b>(graph, options)
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>graph</b>
+									
+								</dt>
+								<dd>the graph to compute</dd>
+							
+								<dt>
+									<b>options</b>
+									
+								</dt>
+								<dd>override vars for graph comparison
+     <dl>
+     <dt>cols</dt><dd>the existing map of node type -> color
+         (default {})</dd>
+     <dt>coldx</dt><dd>the index in the colormap to resume at
+         (default 0)</dd>
+     <dt>lblregex</dt><dd>the regex used to compute numbers from edges
+         (default match first floating point number)<dd>
+     </dl></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd>a dict with:
+     <dl>
+     <dt>parsed</dt><dd>the parsed graph</dd>
+     <dt>index</dt><dd>map from node id to node</dd>
+     <dt>cols</dt><dd>the resulting colormap</dd>
+     <dt>coldx</dt><dd>color index we left off at</dd>
+     </dl></dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".mergedGraph"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">RFGraph.</span><b>mergedGraph</b>(grf, grt, diff, samemap)
+					
+					</div>
+					<div class="description">
+						Compute the merged graph. Modifies nodes in both the source and destination graph.
+Assumes root nodes are the same.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Graph}</span> <b>grf</b>
+									
+								</dt>
+								<dd>source graph</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Graph}</span> <b>grt</b>
+									
+								</dt>
+								<dd>destination graph</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Array}</span> <b>diff</b>
+									
+								</dt>
+								<dd>list of diffs from grf->grt</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>samemap</b>
+									
+								</dt>
+								<dd>bidi map of same node IDs to nodes between grf and grt, as generated by Sed.unrollSame</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".modifyNames"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">RFGraph.</span><b>modifyNames</b>(g, fn)
+					
+					</div>
+					<div class="description">
+						Modify node IDs in graph g by applying fn(str) -> str
+Modifies g.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>g</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>fn</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".walkDiff"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">RFGraph.</span><b>walkDiff</b>(grf, grt)
+					
+					</div>
+					<div class="description">
+						Internal computation for graph difference between two graphs
+						
+							<br />
+							<i>Defined in: </i> <a href="../symbols/src/js_old.js.html">old.js</a>.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Graph}</span> <b>grf</b>
+									
+								</dt>
+								<dd>the "from" graph, as returned by makegraph</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Graph}</span> <b>grt</b>
+									
+								</dt>
+								<dd>the "to" graph, as returned by makegraph</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					
+				
+			
+			
+<!-- ============================== event details ========================= -->		
+			
+			
+			<hr />
+		</div>
+
+		
+<!-- ============================== footer ================================= -->
+		<div class="fineprint" style="clear:both">
+			
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Sat May 03 2014 21:15:11 GMT-0700 (PDT)
+		</div>
+	</body>
+</html>

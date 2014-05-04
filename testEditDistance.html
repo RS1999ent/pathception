@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html>
+<!--
+Copyright (c) 2014, Carnegie Mellon University.
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions
+are met:
+1. Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+2. Redistributions in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in the
+   documentation and/or other materials provided with the distribution.
+3. Neither the name of the University nor the names of its contributors
+   may be used to endorse or promote products derived from this software
+   without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT
+HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS
+OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED
+AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY
+WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+POSSIBILITY OF SUCH DAMAGE.
+-->
+<head>
+<title>Edit Distance Test</title>
+
+<link rel="stylesheet" href="css/styles.css" type="text/css" media="screen">
+<style type="text/css">
+body {
+    font-size: 120% !important;
+}
+input {
+    font-size: 120% !important;
+}
+#outpt {
+    font-size: 150%;
+}
+
+.add {
+    color: #0c0;
+}
+.del {
+    color: #f00;
+}
+.ct {
+    font-size: 75%;
+    vertical-align: .5em;
+}
+.cb {
+    font-size: 75%;
+}
+</style>
+
+<!-- Libraries -->
+<script language="javascript" type="text/javascript" src="lib/jquery-1.5.2.js"></script>
+<script language="javascript" type="text/javascript" src="lib/jquery-ui-1.8.12.custom.min.js"></script>
+
+<script language="javascript" type="text/javascript">
+function init() {
+    $("#btnreset").click(function() {
+        $("#st1").attr("value","");
+        $("#st2").attr("value","");
+        compute();
+    });
+    $("#st1").keyup(compute);
+    $("#st2").keyup(compute);
+}
+function compute() {
+    var s1 = $("#st1").attr("value");
+    var s2 = $("#st2").attr("value");
+    
+    //$("#outpt").html(editdt_format(s1,s2) + "");
+    
+    $("#outpt").empty();
+    $("#outpt").append(editdtp_format(s1,s2));
+}
+
+var SPACES = "                                        ";
+function rjust(st,len) {
+    return SPACES.substr(0,len-st.length)+st;
+}
+
+function strmat(mat,w) {
+    var st = "";
+    for (var i = 0; i < mat.length; ++i) {
+        for (var j = 0; j < mat[i].length; ++j) {
+            st += rjust(mat[i][j]+"",w);
+        }
+        st += "\n";
+    }
+    return st;
+}
+
+function strmatp(mat,w) {
+    var st = "";
+    for (var i = 0; i < mat.length; ++i) {
+        for (var j = 0; j < mat[i].length; ++j) {
+            var pval = [];
+            var p = mat[i][j];
+            for (var k = 0; k < mat[i][j].length; ++k) {
+                pval.push(p[k].f + "" + p[k].t + "" + p[k].p1 + "" + p[k].p2);
+            }
+            st += rjust(pval.join(","), w);
+        }
+        st += "\n";
+    }
+    return st;
+}
+
+/**
+ * Do some formatting of editdt to show addition/deletion/change
+ * @param s1 string "from"
+ * @param s2 string "to"
+ */
+function editdt_format(s1,s2) {
+    var diff = editdt(s1,s2);
+    var fmt = "";
+    
+    for (var i = 0; i < diff.length; i += 2) {
+        var type = diff.charAt(i);
+        var c = diff.charAt(i+1);
+        if (type == "+") {
+            fmt += "<span class='add'>" + c + "</span>";
+        } else if (type == "-") {
+            fmt += "<span class='del'>" + c + "</span>";
+        } else {
+            fmt += "<span class='ct'>" + c +
+                "</span>/<span class='cb'>" + type + "</span>";
+        }
+    }
+    
+    return fmt;
+}
+
+function editdtp_format(s1,s2) {
+    var diff = editdtp(s1,s2);
+    var dcont = $("<div>").css({"position": "relative"});
+    
+    var BXW = 35; //box width
+    var BXH = 35; //box height
+    var SEP = 20; //separation between lines
+    var LINEW = 2; //connector line width
+    
+    var mkrow = function() {
+        return $("<div>").css({
+            "position": "absolute"
+        });
+    };
+    
+    var mkbox = function(c, dx) {
+        var box = $("<div>")
+            .css({
+                "position": "absolute",
+                "top": 0,
+                "width": BXW,
+                "height": BXH,
+                "left": dx*BXW,
+                "font-weight": "bold",
+                "border": "1px solid #666",
+                "text-align": "center"
+            })
+            .text(c);
+        return box;
+    };
+    
+    var mkline = function(i1,i2,color) {
+        var cont = $("<div>")
+            .css({
+                "position": "absolute"
+            });
+        
+        var mkl = function() {
+            return $("<div>")
+                .css({
+                    "position": "absolute",
+                    "background-color": color
+                });
+        }
+        
+        var p1 = mkl()
+            .css({
+                "top": LINEW,
+                "left": i1*BXW,
+                "width": LINEW,
+                "height": SEP/2-LINEW
+            })
+            .appendTo(cont);
+        var p2 = mkl()
+            .css({
+                "top": SEP/2,
+                "left": Math.min(i1,i2)*BXW,
+                "width": Math.abs(i2-i1)*BXW+LINEW,
+                "height": LINEW
+            })
+            .appendTo(cont);
+        var p3 = mkl()
+            .css({
+                "top": SEP/2,
+                "left": i2*BXW,
+                "width": LINEW,
+                "height": SEP/2
+            })
+            .appendTo(cont);
+        
+        return cont;
+    };
+    
+    //add strings
+    var l1c = [];
+    var l1 = mkrow().appendTo(dcont);
+    for (var i = 0; i < s1.length; ++i) {
+        l1c.push(mkbox(s1.charAt(i), i));
+        l1.append(l1c[l1c.length-1]);
+    }
+    
+    var l2c = [];
+    var l2 = mkrow().css({"top": BXH+SEP}).appendTo(dcont);
+    for (var i = 0; i < s2.length; ++i) {
+        l2c.push(mkbox(s2.charAt(i), i));
+        l2.append(l2c[l2c.length-1]);
+    }
+    
+    //add diffs
+    var linecont = $("<div>")
+        .css({
+            "position": "absolute",
+            "top": BXH
+        }).appendTo(dcont);
+    for (var i = 0; i < diff.length; ++i) {
+        var d = diff[i];
+        var insertion = (d.f === "-");
+        var deletion = (d.t === "-");
+        var i1 = insertion ? d.p1 : d.p1 + 0.5;
+        var i2 = deletion ? d.p2 : d.p2 + 0.5;
+        
+        var color = "#000";
+        if (insertion) {
+            color = "#0c0";
+        }
+        if (deletion) {
+            color = "#f00";
+        }
+        
+        mkline(i1, i2, color).appendTo(linecont);
+    }
+    
+    return dcont;
+}
+
+/**
+ * String edit distance with edit tracking and position tracking.
+ *  f: character in source string
+ *  t: character in destination string
+ *  p1: position in source string
+ *  p2: position in destination string
+ * @param s1 string "from"
+ * @param s2 string "to"
+ */
+function editdtp(s1,s2) {
+    var min3t = function(a,b,c) {
+        if (a.length < b.length && a.length < c.length) {
+            return a;
+        } else if (b.length < c.length) {
+            return b;
+        } else {
+            return c;
+        }
+    };
+    
+    //allocate
+    var d = new Array();
+    for (var i = 0; i <= s1.length; ++i) {
+        d[i] = new Array();
+        for (var j = 0; j <= s2.length; ++j) {
+            d[i].push([]);
+        }
+    }
+    
+    var dst = [];
+    for (var i = 0; i <= s1.length; ++i) {
+        d[i][0] = dst;
+        dst = dst.concat([{f: s1.charAt(i), t: "-", p1: i, p2: 0}]);
+    }
+    dst = [];
+    for (var i = 0; i <= s2.length; ++i) {
+        d[0][i] = dst;
+        dst = dst.concat([{f: "-", t: s2.charAt(i), v: "+" + s2.charAt(i), p1: 0, p2: i}]);
+    }
+    
+    for (var j = 1; j <= s2.length; ++j) {
+        for (var i = 1; i <= s1.length; ++i) {
+            var c1 = s1.charAt(i-1) + "";
+            var c2 = s2.charAt(j-1) + "";
+            if (s1.charAt(i-1) == s2.charAt(j-1)) {
+                d[i][j] = d[i-1][j-1];
+            } else {
+                d[i][j] = min3t(
+                    d[i-1][j].concat([{f: c1, t: "-", p1: i-1, p2: j}]),
+                    d[i][j-1].concat([{f: "-", t: c2, p1: i, p2: j-1}]),
+                    d[i-1][j-1].concat([{f: c1, t: c2, p1: i-1, p2: j-1}])
+                    );
+            }
+        }
+    }
+    
+    var rv = d[s1.length][s2.length];
+    return rv;
+}
+
+/**
+ * String edit distance with edit tracking
+ * @param s1 string "from"
+ * @param s2 string "to"
+ */
+function editdt(s1,s2) {
+    var min3t = function(a,b,c) {
+        if (a.length < b.length && a.length < c.length) {
+            return a;
+        } else if (b.length < c.length) {
+            return b;
+        } else {
+            return c;
+        }
+    };
+    
+    //allocate
+    var d = new Array();
+    for (var i = 0; i <= s1.length; ++i) {
+        d[i] = new Array();
+        for (var j = 0; j <= s2.length; ++j) {
+            d[i].push("");
+        }
+    }
+    
+    var dst = "";
+    for (var i = 0; i <= s1.length; ++i) {
+        d[i][0] = dst;
+        dst += "-" + s1.charAt(i);
+    }
+    dst = "";
+    for (var i = 0; i <= s2.length; ++i) {
+        d[0][i] = dst;
+        dst += "+" + s2.charAt(i);
+    }
+    
+    for (var j = 1; j <= s2.length; ++j) {
+        for (var i = 1; i <= s1.length; ++i) {
+            var c1 = s1.charAt(i-1) + "";
+            var c2 = s2.charAt(j-1) + "";
+            if (s1.charAt(i-1) == s2.charAt(j-1)) {
+                d[i][j] = d[i-1][j-1];
+            } else {
+                d[i][j] = min3t(
+                    d[i-1][j]+"-"+c1,
+                    d[i][j-1]+"+"+c2,
+                    d[i-1][j-1]+c1+c2
+                    );
+            }
+        }
+    }
+    
+    var rv = d[s1.length][s2.length];
+    return rv;
+}
+
+/**
+ * Basic string edit distance
+ */
+function editd(s1,s2) {
+    var min3 = function(a,b,c) {
+        if (a < b && a < c) {
+            return a;
+        } else if (b < c) {
+            return b;
+        } else {
+            return c;
+        }
+    };
+    
+    //allocate
+    var d = new Array();
+    for (var i = 0; i <= s1.length; ++i) {
+        d[i] = new Array();
+        for (var j = 0; j <= s2.length; ++j) {
+            d[i].push(0);
+        }
+    }
+    
+    for (var i = 0; i <= s1.length; ++i) {
+        d[i][0] = i;
+    }
+    for (var i = 0; i <= s2.length; ++i) {
+        d[0][i] = i;
+    }
+    
+    for (var j = 1; j <= s2.length; ++j) {
+        for (var i = 1; i <= s1.length; ++i) {
+            if (s1.charAt(i-1) == s2.charAt(j-1)) {
+                d[i][j] = d[i-1][j-1];
+            } else {
+                d[i][j] = min3(
+                    d[i-1][j]+1,
+                    d[i][j-1]+1,
+                    d[i-1][j-1]+1
+                    );
+            }
+        }
+    }
+    return d[s1.length][s2.length];
+}
+</script>
+</head>
+
+<body onload="init()">
+
+<div>
+    <div>String 1: <input type="text" id="st1" size="30"/></div>
+    <div>String 2: <input type="text" id="st2" size="30"/></div>
+    <div>
+        <button id="btnreset">reset</button>
+        <span style="margin-left: 10px;">
+            Legend:
+            <span class="add">Addition</span>
+            <span class="del">Deletion</span>
+            <span class="ct">new</span>/<span class="cb">old</span>Substitution
+        </span>
+    </div>
+</div>
+
+<hr>
+
+<div id="outpt">
+    
+</div>
+
+</body>
+</html>

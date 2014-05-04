@@ -1,0 +1,7 @@
+*.sublime-project
+*.sublime-workspace
+pathception.com
+doc/tex
+doc/study
+doc/notes
+util

@@ -1,0 +1,41 @@
+body {
+    margin: 0px; padding: 0px;
+    font-family: Tahoma, Verdana, Helvetica, Arial, sans-serif;
+    font-size: 90%;
+}
+
+h1 {
+    margin: 0;
+    padding-left: 10px;
+    background: #ddd;
+}
+h2 {
+    margin: 0;
+    padding-left: 20px;
+    background: #ddd;
+}
+p {
+    padding-left: 10px;
+}
+
+pre {
+    padding-left: 10px;
+}
+
+.ic { padding-left: 20px; height: 16px; font-family: monospace; }
+.ic-folder { background: url(img/icons/folder.png) no-repeat; }
+.ic-code   { background: url(img/icons/page_white_code.png) no-repeat; }
+.ic-text   { background: url(img/icons/page_white_text.png) no-repeat; }
+
+.pagelist {
+    list-style-image:url(img/icons/page_white.png);
+    margin-top: 0px;
+    padding-top: 0px;
+}
+.pagelist li {
+    margin-top: 8px;
+    font-size: 140%;
+}
+.pagelist li:hover {
+    font-weight: bold;
+}

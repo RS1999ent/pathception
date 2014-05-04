@@ -1,0 +1,17 @@
+{  "nodes": [
+     {"id":"1", "fontcolor":"blue","shape":"plaintext","label":"Cluster ID: 1145\nSpecific Mutation Type: Originating cluster\nCost: 0\nOverall Mutation Type: Originating_Cluster\nCandidate originating clusters: \n\nAvg. response times: 225 us ; 226 us\nStandard Deviations: 46 us ; 44 us\nKS-Test2 P-value: 1.000\nCluster likelihood: 0.0289 ; 0.0288\nPercent makeup: 50 / 50\nrequests: 6096 ; 6023"}
+    ,{"id":"2592308213341560.2592308213342385", "label":"e10__t3__NFS3_LOOKUP_CALL_TYPE\nDEFAULT"}
+    ,{"id":"2592308213341560.2592308213602102", "label":"e10__t3__NFS_DIRCACHE_CALL_TYPE\nDEFAULT"}
+    ,{"id":"2592308213341560.2592308213849055", "label":"e10__t3__NFS_CACHE_BLOCK_OP_TYPE\nNFSCACHE_READ_HIT"}
+    ,{"id":"2592308213341560.2592308213894092", "label":"e10__t3__NFS_CACHE_BLOCK_OP_TYPE\nNFSCACHE_READ_HIT"}
+    ,{"id":"2592308213341560.2592308213899267", "label":"e10__t3__NFS_DIRCACHE_REPLY_TYPE\nNFSDIRCACHE_ENTRY_NOT_FOUND"}
+    ,{"id":"2592308213341560.2592308213907142", "label":"e10__t3__NFS3_LOOKUP_REPLY_TYPE\nDEFAULT"}
+  ],
+  "edges": [
+     {"from":"2592308213341560.2592308213342385", "to":"2592308213341560.2592308213602102", "color":"black","label":"p:1.00\n   a: 112us / 114us\n   s: 41us / 41us"}
+    ,{"from":"2592308213341560.2592308213602102", "to":"2592308213341560.2592308213849055", "color":"black","label":"p:1.00\n   a: 85us / 84us\n   s: 10us / 9us"}
+    ,{"from":"2592308213341560.2592308213849055", "to":"2592308213341560.2592308213894092", "color":"black","label":"p:1.00\n   a: 16us / 16us\n   s: 3us / 3us"}
+    ,{"from":"2592308213341560.2592308213894092", "to":"2592308213341560.2592308213899267", "color":"black","label":"p:1.00\n   a: 9us / 8us\n   s: 4us / 4us"}
+    ,{"from":"2592308213341560.2592308213899267", "to":"2592308213341560.2592308213907142", "color":"black","label":"p:1.00\n   a: 3us / 3us\n   s: 1us / 1us"}
+    ]
+}

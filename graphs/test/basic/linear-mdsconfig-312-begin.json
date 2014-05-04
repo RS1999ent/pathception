@@ -1,0 +1,21 @@
+{  nodes: [
+     {id:'node', label:"\N"}
+    ,{id:'graph', bb:"0,0,758,3182"}
+    ,{id:'1', label:"Cluster ID: 312\nSpecific Mutation Type: Structural mutation\nCost: 549785\nOverall Mutation Type: Structural_Mutation\nCandidate\originating clusters: 1782 (10.5) 1751 (2.625) \n\nAvg. response times: 0 us ; 28570 us\nStandard Deviations: 0 us ; 8374 us\nKS-Test2\P-value: -1.000\nCluster likelihood: 0.0000 ; 0.0006\nPercent makeup: 0 / 100\nrequests: 0 ; 84", fontcolor:"blue", shape:"plaintext", pos:"164,3082", width:"4.5556", height:"2.7778"}
+    ,{id:'"1198894463746507.1198894463782410"', label:"e10__t3__RPC_CALL_TYPE\nDEFAULT", pos:"521,2159", width:"3.75", height:"0.79167"}
+    ,{id:'"1198894463583645.1198894463584965"', label:"e10__t3__NFS3_WRITE_CALL_TYPE\nDEFAULT", pos:"521,3082", width:"4.8611", height:"0.79167"}
+    ,{id:'"1198894463583645.1198894463611972"', label:"e10__t3__NFS_CACHE_BLOCK_OP_TYPE\nNFSCACHE_WRITE", pos:"521,2869", width:"5.5", height:"0.79167"}
+    ,{id:'"1198894463583645.1198894463638147"', label:"e10__t3__NFS_CACHE_BLOCK_OP_TYPE\nNFSCACHE_READ_MISS", pos:"521,2727", width:"5.5", height:"0.79167"}
+    ,{id:'"1198894463583645.1198894463672475"', label:"e10__t3__MDSCLIENT_LOOKUP_CALL_TYPE\nDEFAULT", pos:"521,2585", width:"6.0278", height:"0.79167"}
+    ,{id:'"1198894463583645.1198894463707447"', label:"e10__t3__MDSCLIENT_LOOKUP_REPLY_TYPE\nMDSCLIENTCACHE_HIT", pos:"521,2443", width:"6.1667", height:"0.79167"}
+    ,{id:'"1198894463583645.1198894463722905"', label:"e10__t3__SSIO_START_TYPE\nSSIO_READ_START", pos:"521,2301", width:"4", height:"0.79167"}
+  ],
+  edges: [
+     {from:'"1198894463583645.1198894463584965"', to:'"1198894463583645.1198894463611972"', color:"black", label:"p:-1.00\n   a: 0us / 7us\n   s: 0us / 2us", pos:"e,521,2897.6 521,3053.3 521,3015.7 521,2949.7 521,2907.7", lp:"558.5,2940"}
+    ,{from:'"1198894463583645.1198894463611972"', to:'"1198894463583645.1198894463638147"', color:"black", label:"p:-1.00\n   a: 0us / 8us\n   s: 0us / 2us", pos:"e,521,2755.7 521,2840.3 521,2818.8 521,2789.2 521,2765.7", lp:"558.5,2798"}
+    ,{from:'"1198894463583645.1198894463638147"', to:'"1198894463583645.1198894463672475"', color:"black", label:"p:-1.00\n   a: 0us / 10us\n   s: 0us / 1us", pos:"e,521,2613.7 521,2698.3 521,2676.8 521,2647.2 521,2623.7", lp:"562,2656"}
+    ,{from:'"1198894463583645.1198894463672475"', to:'"1198894463583645.1198894463707447"', color:"black", label:"p:-1.00\n   a: 0us / 12us\n   s: 0us / 2us", pos:"e,521,2471.7 521,2556.3 521,2534.8 521,2505.2 521,2481.7", lp:"562,2514"}
+    ,{from:'"1198894463583645.1198894463707447"', to:'"1198894463583645.1198894463722905"', color:"black", label:"p:-1.00\n   a: 0us / 5us\n   s: 0us / 1us", pos:"e,521,2329.7 521,2414.3 521,2392.8 521,2363.2 521,2339.7", lp:"558.5,2372"}
+    ,{from:'"1198894463583645.1198894463722905"', to:'"1198894463746507.1198894463782410"', color:"black", label:"p:-1.00\n   a: 0us / 20us\n   s: 0us / 2us", pos:"e,521,2187.7 521,2272.3 521,2250.8 521,2221.2 521,2197.7", lp:"562,2230"}
+    ]
+}

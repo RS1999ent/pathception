@@ -1,0 +1,24 @@
+# 3  R: 53.790597 usecs RT: 23060482.829943 usecs
+Digraph G {
+1 [fontcolor="blue" shape="plaintext" label="Cluster ID: 9\nSpecific Mutation Type: Structural mutation\nCost: 0\nOverall Mutation Type: Structural_Mutation and_Response_Time_Change\nCandidate originating clusters: 8\n\nAvg. response times: 8748 us ; 4408 us\nStandard Deviations: 40831 us ; 15889 us\nKS-Test2 P-value: 0.000\nCluster likelihood: 0.1353 ; 0.3783\nPercent makeup: 8 / 92\nrequests: 18199 ; 203061"]
+6349324424636160.6349324424637232 [label="e10__t3__NFS3_WRITE_CALL_TYPE\nDEFAULT"]
+6349324424636160.6349324424666205 [label="e10__t3__NFS_CACHE_BLOCK_OP_TYPE\nNFSCACHE_WRITE"]
+6349324424636160.6349324424798550 [label="e10__t3__NFS3_WRITE_REPLY_TYPE\nDEFAULT"]
+
+1.1 [label="e10__t3__NFS_CACHE_BLOCK_OP_TYPE\nNFSCACHE_WRITE"]
+1.2 [label="e10__t3__MDSCLIENT_LOOKUP_CALL_TYPE\nDEFAULT"]
+1.3 [label="e10__t3__MDSCLIENT_LOOKUP_REPLY_TYPE\nMDSCLIENTCACHE_HIT"]
+1.4 [label="e10__t3__NFS_CACHE_BLOCK_OP_TYPE\nNFSCACHE_WRITE"]
+
+6349324424636160.6349324424637232 -> 6349324424636160.6349324424666205 [color="black" label="p:0.00\n   a: 50us / 60us\n   s: 40829us / 15888us"]
+
+6349324424636160.6349324424637232 -> 1.1 [color="black" label="p:-1.00\n  a: 50us / 60us\n  s: 6us / 3us"]
+1.1 -> 1.2 [color="black" label="p:-1.00  a: 20us / 21us\n  s: 60us / 60us"]
+6349324424636160.6349324424666205 -> 1.2 [color="black" label="p=1.00\n  a: 50us / 40us\n  s: 6us / 3us"]
+1.2 -> 1.3 [color="red" label="p=0.00\n  a: 500us/ 3000us\n  s: 50us / 55us"]
+1.3 -> 6349324424636160.6349324424798550 [color="black" label="p=1.00\n  a: 60us / 160us\n   s: 6us / 3us"]
+
+6349324424636160.6349324424637232 -> 1.4 [color="black" label="p:-1.00\n  a: 0us / 100us\n  s: 5us / 3us"]
+1.4 -> 1.2 [color="black"  label="p:-1.100\n  a: 20us / 20us\n  s: 50us /3us"]
+
+}

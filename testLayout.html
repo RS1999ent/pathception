@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<!--
+Copyright (c) 2014, Carnegie Mellon University.
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions
+are met:
+1. Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+2. Redistributions in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in the
+   documentation and/or other materials provided with the distribution.
+3. Neither the name of the University nor the names of its contributors
+   may be used to endorse or promote products derived from this software
+   without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT
+HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS
+OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED
+AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY
+WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+POSSIBILITY OF SUCH DAMAGE.
+-->
+<head>
+<title>Request Flow Graph Visualization</title>
+
+<link rel="stylesheet" href="css/styles.css" type="text/css" media="screen">
+<link rel="stylesheet" href="css/blitzer/jquery-ui-1.8.12.custom.css" type="text/css" media="screen" />
+
+<!-- Libraries -->
+<script language="javascript" type="text/javascript" src="lib/jquery-1.5.2.js"></script>
+<script language="javascript" type="text/javascript" src="lib/jquery-ui-1.8.12.custom.min.js"></script>
+<script language="javascript" type="text/javascript" src="lib/jit-mod.js"></script>
+
+<!-- Our JS -->
+<script language="javascript" type="text/javascript" src="js/const.js"></script>
+<script language="javascript" type="text/javascript" src="js/graphutil.js"></script>
+<script language="javascript" type="text/javascript" src="js/jitextend.js"></script>
+<script language="javascript" type="text/javascript" src="js/layout.js"></script>
+<script language="javascript" type="text/javascript" src="js/rfgraph.js"></script>
+<script language="javascript" type="text/javascript" src="js/util.js"></script>
+
+<script language="javascript">
+Util.importTo(Util, window);
+importTo(GraphUtil, window);
+importTo(RFGraph, window);
+
+$(document).ready(function() {
+    init();
+});
+
+var SEL_ON = false;
+var FRACFROM = 0.5;
+var FRACTO = 0.5;
+var SHOWBOTH = true;
+var MINEDGESEL = 0;
+var MAXEDGESEL = 1e10;
+
+var fd;
+
+function init() {
+    fd = new $jit.ForceDirected({
+        injectInto: "grapharea",
+        Navigation: {
+          enable: true,
+          panning: 'avoid nodes',
+          zooming: 20
+        },
+        Node: {
+          overridable: true,
+          color: "#000",
+          type: 'rf-node', //"square" "circle"
+          dim: 15
+        },
+        Edge: {
+          overridable: true,
+          color: '#000',
+          lineWidth: 2.0,
+          type: "label-line"
+        },
+        Label: {
+          type: 'Native',
+          size: 10,
+          color: '#000',
+          style: 'bold'
+        },
+        onBeforeCompute: function() {
+           fd.graph.eachNode(function (n) {
+            //n.pos.setc(n.data.startx,n.data.starty);
+            n.setPos(new $jit.Complex(n.data.startx, n.data.starty));
+           });
+        },
+        Events: {
+          enable: true,
+          onMouseEnter: function() {
+            fd.canvas.getElement().style.cursor = 'move';
+          },
+          onMouseLeave: function() {
+            fd.canvas.getElement().style.cursor = '';
+          },
+          onDragMove: function(node, eventInfo, e) {
+              var pos = eventInfo.getPos();
+              node.pos.setc(pos.x, pos.y);
+              fd.plot();
+          },
+          //Implement the same handler for touchscreens
+          onTouchMove: function(node, eventInfo, e) {
+            $jit.util.event.stop(e); //stop default touchmove event
+            this.onDragMove(node, eventInfo, e);
+          },
+          onClick: function(node) {
+            if(!node) return;
+            
+            Util.log(node.data);
+          }
+        },
+        iterations: 0,
+        levelDistance: 0.1
+    });
+    
+    RFGraph.setdir("graphs/test/basic"); var name = "big-mdsconfig-1004";
+    
+    //RFGraph.setdir("graphs/test/yed"); var name = "forkjoin";
+    
+    getgraph(name, function(dta) {
+        var graph = makegraph(dta, {});
+        for (var i = 0; i < graph.parsed.length; ++i) {
+            var n = graph.parsed[i];
+            n.data.startx = 0;
+            n.data.starty = i * 30;
+            n.data.diff = "inboth";
+        }
+        Layout.compute(graph);
+        fd.loadJSON(graph.parsed);
+        
+        fd.computeIncremental({
+            iter: 0,
+            property: ['current'],
+            onStep: function(perc){ },
+            onComplete: function(){
+                doplot();
+            }
+        });
+        
+        setTimeout(doplot, 100);
+    });
+}
+
+function doplot() {
+    fd.plot();
+}
+</script>
+</head>
+
+<body>
+
+<div id="cont">
+    <div id="grapharea">
+    
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,9 @@
+{  "nodes": [
+     {"id":"1", "fontcolor":"blue","shape":"plaintext","label":"Cluster ID: 789\nSpecific Mutation Type: Originating cluster\nCost: 0\nOverall Mutation Type: Originating_Cluster\nCandidate originating clusters: \n\nAvg. response times: 7 us ; 7 us\nStandard Deviations: 2 us ; 2 us\nKS-Test2 P-value: 1.000\nCluster likelihood: 0.0392 ; 0.0386\nPercent makeup: 50 / 50\nrequests: 8266 ; 8122"}
+    ,{"id":"2587208551108095.2587208551108620", "label":"e10__t3__NFS3_GETATTR_CALL_TYPE\nDEFAULT"}
+    ,{"id":"2587208551108095.2587208551126200", "label":"e10__t3__NFS3_GETATTR_REPLY_TYPE\nDEFAULT"}
+  ],
+  "edges": [
+     {"from":"2587208551108095.2587208551108620", "to":"2587208551108095.2587208551126200", "color":"black","label":"p:1.00\n   a: 7us / 7us\n   s: 2us / 2us"}
+    ]
+}

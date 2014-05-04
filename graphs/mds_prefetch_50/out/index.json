@@ -1,0 +1,12 @@
+[{}
+,{"id":205,"precursor":190,"cost":21735522,"type":"Structural mutation"}
+,{"id":194,"precursor":232,"cost":983064,"type":"Structural mutation"}
+,{"id":191,"precursor":191,"cost":435539,"type":"Response time change"}
+,{"id":223,"precursor":223,"cost":147687,"type":"Response time change"}
+,{"id":195,"precursor":195,"cost":80705,"type":"Response time change"}
+,{"id":21,"precursor":21,"cost":32730,"type":"Response time change"}
+,{"id":74,"precursor":74,"cost":6039,"type":"Response time change"}
+,{"id":249,"precursor":249,"cost":0,"type":"Structural mutation"}
+,{"id":206,"precursor":206,"cost":0,"type":"Structural mutation"}
+,{"id":240,"precursor":240,"cost":0,"type":"Structural mutation"}
+]

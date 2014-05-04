@@ -1,0 +1,35 @@
+{  "nodes": [
+     {"id":"1", "fontcolor":"blue","shape":"plaintext","label":"Cluster ID: 1751\nSpecific Mutation Type: Originating cluster\nCost: 0\nOverall Mutation Type: Originating_Cluster and_Response_Time_Change\nCandidate originating clusters: \n\nAvg. response times: 1939 us ; 3787 us\nStandard Deviations: 5085 us ; 7489 us\nKS-Test2 P-value: 0.005\nCluster likelihood: 0.0052 ; 0.0030\nPercent makeup: 63 / 37\nrequests: 677 ; 393"}
+    ,{"id":"1162470072350415.1162470072370800", "label":"e10__t3__DECODE_START_TYPE\nDEFAULT"}
+    ,{"id":"1162470072350415.1162470072401617", "label":"e10__t3__DECODE_END_TYPE\nDEFAULT"}
+    ,{"id":"1162470072350415.1162470072410737", "label":"e10__t3__SSIO_END_TYPE\nSSIO_READ_END"}
+    ,{"id":"1162470072350415.1162470072444885", "label":"e10__t3__NFS3_WRITE_REPLY_TYPE\nDEFAULT"}
+    ,{"id":"1162508429343307.1162470072321180", "label":"e10__t3__RPC_REPLY_TYPE\nDEFAULT"}
+    ,{"id":"1162470070773622.1162508428970730", "label":"e100__t3__FRONTEND_READ_CALL_TYPE\nDEFAULT"}
+    ,{"id":"1162470070773622.1162508429326230", "label":"e100__t3__FRONTEND_BLOCK_OP_START_TYPE\nFRONTEND_READ_HIT"}
+    ,{"id":"1162470070773622.1162508429338162", "label":"e100__t3__FRONTEND_READ_REPLY_TYPE\nDEFAULT"}
+    ,{"id":"1162470070732897.1162470070768275", "label":"e10__t3__RPC_CALL_TYPE\nDEFAULT"}
+    ,{"id":"1162470070584330.1162470070585837", "label":"e10__t3__NFS3_WRITE_CALL_TYPE\nDEFAULT"}
+    ,{"id":"1162470070584330.1162470070606387", "label":"e10__t3__NFS_CACHE_BLOCK_OP_TYPE\nNFSCACHE_WRITE"}
+    ,{"id":"1162470070584330.1162470070627447", "label":"e10__t3__NFS_CACHE_BLOCK_OP_TYPE\nNFSCACHE_READ_MISS"}
+    ,{"id":"1162470070584330.1162470070653907", "label":"e10__t3__MDSCLIENT_LOOKUP_CALL_TYPE\nDEFAULT"}
+    ,{"id":"1162470070584330.1162470070685760", "label":"e10__t3__MDSCLIENT_LOOKUP_REPLY_TYPE\nMDSCLIENTCACHE_HIT"}
+    ,{"id":"1162470070584330.1162470070700512", "label":"e10__t3__SSIO_START_TYPE\nSSIO_READ_START"}
+  ],
+  "edges": [
+     {"from":"1162470070584330.1162470070585837", "to":"1162470070584330.1162470070606387", "color":"black","label":"p:1.00\n   a: 7us / 7us\n   s: 1us / 1us"}
+    ,{"from":"1162470070584330.1162470070606387", "to":"1162470070584330.1162470070627447", "color":"black","label":"p:1.00\n   a: 7us / 7us\n   s: 2us / 1us"}
+    ,{"from":"1162470070584330.1162470070627447", "to":"1162470070584330.1162470070653907", "color":"black","label":"p:1.00\n   a: 10us / 10us\n   s: 1us / 1us"}
+    ,{"from":"1162470070584330.1162470070653907", "to":"1162470070584330.1162470070685760", "color":"black","label":"p:1.00\n   a: 12us / 12us\n   s: 2us / 2us"}
+    ,{"from":"1162470070584330.1162470070685760", "to":"1162470070584330.1162470070700512", "color":"black","label":"p:1.00\n   a: 5us / 5us\n   s: 1us / 1us"}
+    ,{"from":"1162470070584330.1162470070700512", "to":"1162470070732897.1162470070768275", "color":"black","label":"p:1.00\n   a: 18us / 19us\n   s: 1us / 2us"}
+    ,{"from":"1162470070732897.1162470070768275", "to":"1162470070773622.1162508428970730", "color":"red","label":"p:0.01\n   a: 918us / 1842us\n   s: 2542us / 3744us"}
+    ,{"from":"1162470070773622.1162508428970730", "to":"1162470070773622.1162508429326230", "color":"red","label":"p:0.01\n   a: 1435us / 3302us\n   s: 5088us / 7491us"}
+    ,{"from":"1162470070773622.1162508429326230", "to":"1162470070773622.1162508429338162", "color":"black","label":"p:1.00\n   a: 4us / 4us\n   s: 1us / 1us"}
+    ,{"from":"1162470070773622.1162508429338162", "to":"1162508429343307.1162470072321180", "color":"black","label":"p:0.00\n   a: 0us / 0us\n   s: 0us / 0us"}
+    ,{"from":"1162508429343307.1162470072321180", "to":"1162470072350415.1162470072370800", "color":"black","label":"p:1.00\n   a: 16us / 17us\n   s: 2us / 2us"}
+    ,{"from":"1162470072350415.1162470072370800", "to":"1162470072350415.1162470072401617", "color":"black","label":"p:1.00\n   a: 13us / 13us\n   s: 2us / 2us"}
+    ,{"from":"1162470072350415.1162470072401617", "to":"1162470072350415.1162470072410737", "color":"black","label":"p:1.00\n   a: 3us / 3us\n   s: 1us / 0us"}
+    ,{"from":"1162470072350415.1162470072410737", "to":"1162470072350415.1162470072444885", "color":"black","label":"p:1.00\n   a: 10us / 10us\n   s: 1us / 1us"}
+    ]
+}

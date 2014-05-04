@@ -1,0 +1,47 @@
+{  "nodes": [
+     {"id":"1", "fontcolor":"blue","shape":"plaintext","label":"Cluster ID: 1782\nSpecific Mutation Type: Originating cluster\nCost: 0\nOverall Mutation Type: Originating_Cluster\nCandidate originating clusters: \n\nAvg. response times: 28091 us ; 26584 us\nStandard Deviations: 7915 us ; 6061 us\nKS-Test2 P-value: 0.960\nCluster likelihood: 0.0095 ; 0.0004\nPercent makeup: 96 / 4\nrequests: 1240 ; 47"}
+    ,{"id":"1162468049771325.1162468049789505", "label":"e10__t3__DECODE_START_TYPE\nDEFAULT"}
+    ,{"id":"1162468049771325.1162468049825722", "label":"e10__t3__DECODE_END_TYPE\nDEFAULT"}
+    ,{"id":"1162468049771325.1162468049837152", "label":"e10__t3__SSIO_END_TYPE\nSSIO_READ_END"}
+    ,{"id":"1162468049771325.1162468049872155", "label":"e10__t3__NFS3_WRITE_REPLY_TYPE\nDEFAULT"}
+    ,{"id":"1162506406855567.1162468049742585", "label":"e10__t3__RPC_REPLY_TYPE\nDEFAULT"}
+    ,{"id":"1162467956432580.1162506314601412", "label":"e100__t3__FRONTEND_READ_CALL_TYPE\nDEFAULT"}
+    ,{"id":"1162467956432580.1162506314650125", "label":"e100__t3__FRONTEND_BLOCK_OP_START_TYPE\nFRONTEND_FLUSH"}
+    ,{"id":"1162467956432580.1162506315103132", "label":"e5100__t3__BACKEND_BLOCK_OP_START_TYPE\nBACKEND_WRITE"}
+    ,{"id":"1162467956432580.1162506315908182", "label":"e5100__t3__BACKEND_BLOCK_OP_START_TYPE\nBACKEND_WRITE"}
+    ,{"id":"1162467956432580.1162506316129635", "label":"e100__t3__FRONTEND_BLOCK_OP_END_TYPE\nDEFAULT"}
+    ,{"id":"1162467956432580.1162506378160957", "label":"e100__t3__FRONTEND_BLOCK_OP_START_TYPE\nFRONTEND_READ_MISS"}
+    ,{"id":"1162467956432580.1162506378283612", "label":"e5100__t3__BACKEND_BLOCK_OP_START_TYPE\nBACKEND_READ"}
+    ,{"id":"1162467956432580.1162506406829107", "label":"e100__t3__FRONTEND_BLOCK_OP_END_TYPE\nDEFAULT"}
+    ,{"id":"1162467956432580.1162506406848855", "label":"e100__t3__FRONTEND_READ_REPLY_TYPE\nDEFAULT"}
+    ,{"id":"1162467956389440.1162467956426040", "label":"e10__t3__RPC_CALL_TYPE\nDEFAULT"}
+    ,{"id":"1162467956230485.1162467956232015", "label":"e10__t3__NFS3_WRITE_CALL_TYPE\nDEFAULT"}
+    ,{"id":"1162467956230485.1162467956258880", "label":"e10__t3__NFS_CACHE_BLOCK_OP_TYPE\nNFSCACHE_WRITE"}
+    ,{"id":"1162467956230485.1162467956285062", "label":"e10__t3__NFS_CACHE_BLOCK_OP_TYPE\nNFSCACHE_READ_MISS"}
+    ,{"id":"1162467956230485.1162467956315887", "label":"e10__t3__MDSCLIENT_LOOKUP_CALL_TYPE\nDEFAULT"}
+    ,{"id":"1162467956230485.1162467956351902", "label":"e10__t3__MDSCLIENT_LOOKUP_REPLY_TYPE\nMDSCLIENTCACHE_HIT"}
+    ,{"id":"1162467956230485.1162467956367315", "label":"e10__t3__SSIO_START_TYPE\nSSIO_READ_START"}
+  ],
+  "edges": [
+     {"from":"1162467956230485.1162467956232015", "to":"1162467956230485.1162467956258880", "color":"black","label":"p:1.00\n   a: 7us / 7us\n   s: 1us / 1us"}
+    ,{"from":"1162467956230485.1162467956258880", "to":"1162467956230485.1162467956285062", "color":"black","label":"p:1.00\n   a: 7us / 8us\n   s: 2us / 1us"}
+    ,{"from":"1162467956230485.1162467956285062", "to":"1162467956230485.1162467956315887", "color":"black","label":"p:1.00\n   a: 10us / 11us\n   s: 1us / 1us"}
+    ,{"from":"1162467956230485.1162467956315887", "to":"1162467956230485.1162467956351902", "color":"black","label":"p:1.00\n   a: 13us / 11us\n   s: 2us / 1us"}
+    ,{"from":"1162467956230485.1162467956351902", "to":"1162467956230485.1162467956367315", "color":"black","label":"p:1.00\n   a: 5us / 5us\n   s: 1us / 0us"}
+    ,{"from":"1162467956230485.1162467956367315", "to":"1162467956389440.1162467956426040", "color":"black","label":"p:1.00\n   a: 19us / 19us\n   s: 2us / 2us"}
+    ,{"from":"1162467956389440.1162467956426040", "to":"1162467956432580.1162506314601412", "color":"black","label":"p:0.98\n   a: 13993us / 13239us\n   s: 3957us / 3030us"}
+    ,{"from":"1162467956432580.1162506314601412", "to":"1162467956432580.1162506314650125", "color":"black","label":"p:1.00\n   a: 17241us / 5202us\n   s: 9136us / 8789us"}
+    ,{"from":"1162467956432580.1162506314650125", "to":"1162467956432580.1162506315103132", "color":"black","label":"p:1.00\n   a: 143us / 141us\n   s: 125us / 15us"}
+    ,{"from":"1162467956432580.1162506315103132", "to":"1162467956432580.1162506315908182", "color":"black","label":"p:1.00\n   a: 226us / 242us\n   s: 20us / 24us"}
+    ,{"from":"1162467956432580.1162506315908182", "to":"1162467956432580.1162506316129635", "color":"black","label":"p:1.00\n   a: 63us / 68us\n   s: 12us / 9us"}
+    ,{"from":"1162467956432580.1162506316129635", "to":"1162467956432580.1162506378160957", "color":"red","label":"p:0.00\n   a: 2172us / 12457us\n   s: 6560us / 9166us"}
+    ,{"from":"1162467956432580.1162506378160957", "to":"1162467956432580.1162506378283612", "color":"black","label":"p:1.00\n   a: 64us / 48us\n   s: 20us / 13us"}
+    ,{"from":"1162467956432580.1162506378283612", "to":"1162467956432580.1162506406829107", "color":"black","label":"p:0.14\n   a: 7671us / 7895us\n   s: 3528us / 2570us"}
+    ,{"from":"1162467956432580.1162506406829107", "to":"1162467956432580.1162506406848855", "color":"black","label":"p:1.00\n   a: 6us / 7us\n   s: 1us / 2us"}
+    ,{"from":"1162467956432580.1162506406848855", "to":"1162506406855567.1162468049742585", "color":"black","label":"p:0.00\n   a: 0us / 0us\n   s: 0us / 0us"}
+    ,{"from":"1162506406855567.1162468049742585", "to":"1162468049771325.1162468049789505", "color":"black","label":"p:1.00\n   a: 17us / 17us\n   s: 2us / 2us"}
+    ,{"from":"1162468049771325.1162468049789505", "to":"1162468049771325.1162468049825722", "color":"black","label":"p:1.00\n   a: 13us / 13us\n   s: 2us / 1us"}
+    ,{"from":"1162468049771325.1162468049825722", "to":"1162468049771325.1162468049837152", "color":"black","label":"p:1.00\n   a: 3us / 3us\n   s: 0us / 0us"}
+    ,{"from":"1162468049771325.1162468049837152", "to":"1162468049771325.1162468049872155", "color":"black","label":"p:1.00\n   a: 10us / 11us\n   s: 1us / 2us"}
+    ]
+}

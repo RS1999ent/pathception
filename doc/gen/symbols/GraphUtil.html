@@ -1,0 +1,1147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		
+		<title>JsDoc Reference - GraphUtil</title>
+
+		<style type="text/css">
+			/* default.css */
+body
+{
+	font: 12px "Lucida Grande", Tahoma, Arial, Helvetica, sans-serif;
+	width: 800px;
+}
+
+.header
+{
+	clear: both;
+	background-color: #ccc;
+	padding: 8px;
+}
+
+h1
+{
+	font-size: 150%;
+	font-weight: bold;
+	padding: 0;
+	margin: 1em 0 0 .3em;
+}
+
+hr
+{
+	border: none 0;
+	border-top: 1px solid #7F8FB1;
+	height: 1px;
+}
+
+pre.code
+{
+	display: block;
+	padding: 8px;
+	border: 1px dashed #ccc;
+}
+
+#index
+{
+	margin-top: 24px;
+	float: left;
+	width: 160px;
+	position: absolute;
+	left: 8px;
+	background-color: #F3F3F3;
+	padding: 8px;
+}
+
+#content
+{
+	margin-left: 190px;
+	width: 600px;
+}
+
+.classList
+{
+	list-style-type: none;
+	padding: 0;
+	margin: 0 0 0 8px;
+	font-family: arial, sans-serif;
+	font-size: 1em;
+	overflow: auto;
+}
+
+.classList li
+{
+	padding: 0;
+	margin: 0 0 8px 0;
+}
+
+.summaryTable { width: 100%; }
+
+h1.classTitle
+{
+	font-size:170%;
+	line-height:130%;
+}
+
+h2 { font-size: 110%; }
+caption, div.sectionTitle
+{
+	background-color: #7F8FB1;
+	color: #fff;
+	font-size:130%;
+	text-align: left;
+	padding: 2px 6px 2px 6px;
+	border: 1px #7F8FB1 solid;
+}
+
+div.sectionTitle { margin-bottom: 8px; }
+.summaryTable thead { display: none; }
+
+.summaryTable td
+{
+	vertical-align: top;
+	padding: 4px;
+	border-bottom: 1px #7F8FB1 solid;
+	border-right: 1px #7F8FB1 solid;
+}
+
+/*col#summaryAttributes {}*/
+.summaryTable td.attributes
+{
+	border-left: 1px #7F8FB1 solid;
+	width: 140px;
+	text-align: right;
+}
+
+td.attributes, .fixedFont
+{
+	line-height: 15px;
+	color: #002EBE;
+	font-family: "Courier New",Courier,monospace;
+	font-size: 13px;
+}
+
+.summaryTable td.nameDescription
+{
+	text-align: left;
+	font-size: 13px;
+	line-height: 15px;
+}
+
+.summaryTable td.nameDescription, .description
+{
+	line-height: 15px;
+	padding: 4px;
+	padding-left: 4px;
+}
+
+.summaryTable { margin-bottom: 8px; }
+
+ul.inheritsList
+{
+	list-style: square;
+	margin-left: 20px;
+	padding-left: 0;
+}
+
+.detailList {
+	margin-left: 20px; 
+	line-height: 15px;
+}
+.detailList dt { margin-left: 20px; }
+
+.detailList .heading
+{
+	font-weight: bold;
+	padding-bottom: 6px;
+	margin-left: 0;
+}
+
+.light, td.attributes, .light a:link, .light a:visited
+{
+	color: #777;
+	font-style: italic;
+}
+
+.fineprint
+{
+	text-align: right;
+	font-size: 10px;
+}
+		</style>
+	</head>
+
+	<body>
+<!-- ============================== header ================================= -->	
+		<!-- begin static/header.html -->
+		<div id="header">
+</div>
+		<!-- end static/header.html -->
+
+<!-- ============================== classes index ============================ -->
+		<div id="index">
+			<!-- begin publish.classesIndex -->
+			<div align="center"><a href="../index.html">Class Index</a>
+| <a href="../files.html">File Index</a></div>
+<hr />
+<h2>Classes</h2>
+<ul class="classList">
+	
+	<li><i><a href="../symbols/_global_.html">_global_</a></i></li>
+	
+	<li><a href="../symbols/Const.html">Const</a></li>
+	
+	<li><a href="../symbols/GraphUtil.html">GraphUtil</a></li>
+	
+	<li><a href="../symbols/Histogram.html">Histogram</a></li>
+	
+	<li><a href="../symbols/JitExtend.html">JitExtend</a></li>
+	
+	<li><a href="../symbols/Layout.html">Layout</a></li>
+	
+	<li><a href="../symbols/Mode.html">Mode</a></li>
+	
+	<li><a href="../symbols/RFGraph.html">RFGraph</a></li>
+	
+	<li><a href="../symbols/Sed.html">Sed</a></li>
+	
+	<li><a href="../symbols/Sizebar.html">Sizebar</a></li>
+	
+	<li><a href="../symbols/Util.html">Util</a></li>
+	
+</ul>
+<hr />
+			<!-- end publish.classesIndex -->
+		</div>
+		
+		<div id="content">
+<!-- ============================== class title ============================ -->
+			<h1 class="classTitle">
+				
+				Namespace GraphUtil
+			</h1>
+
+<!-- ============================== class summary ========================== -->			
+			<p class="description">
+				
+				
+			
+				Graph utilities
+				
+				
+					<br /><i>Defined in: </i> <a href="../symbols/src/js_graphutil.js.html">graphutil.js</a>.
+				
+			</p>
+
+<!-- ============================== constructor summary ==================== -->			
+			
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class GraphUtil.">
+				<caption>Namespace Summary</caption>
+				<thead>
+					<tr>
+						<th scope="col">Constructor Attributes</th>
+						<th scope="col">Constructor Name and Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="attributes">&nbsp;</td>
+						<td class="nameDescription" >
+							<div class="fixedFont">
+								<b><a href="../symbols/GraphUtil.html#constructor">GraphUtil</a></b>
+							</div>
+							<div class="description"></div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			
+
+<!-- ============================== properties summary ===================== -->
+			
+
+<!-- ============================== methods summary ======================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class GraphUtil.">
+					<caption>Method Summary</caption>
+					<thead>
+						<tr>
+							<th scope="col">Method Attributes</th>
+							<th scope="col">Method Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">GraphUtil.<b><a href="../symbols/GraphUtil.html#.applyMultiY">applyMultiY</a></b>(g, keys)
+								</div>
+								<div class="description">Apply weighted y positions to nodes n[] in g based upon values 
+ in n.data[keys[0].key].</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">GraphUtil.<b><a href="../symbols/GraphUtil.html#.applyY">applyY</a></b>(g, key)
+								</div>
+								<div class="description">Apply y positions to nodes n[] in g based upon value in n.data["key"]</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">GraphUtil.<b><a href="../symbols/GraphUtil.html#.bfsnumber">bfsnumber</a></b>(gr)
+								</div>
+								<div class="description">Apply a breadth-first numbering to the given graph</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">GraphUtil.<b><a href="../symbols/GraphUtil.html#.dist">dist</a></b>(p1, p2)
+								</div>
+								<div class="description">Distance from p1 to p2</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">GraphUtil.<b><a href="../symbols/GraphUtil.html#.dupedge">dupedge</a></b>(e)
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">GraphUtil.<b><a href="../symbols/GraphUtil.html#.dupnode">dupnode</a></b>(n)
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">GraphUtil.<b><a href="../symbols/GraphUtil.html#.edgeeq">edgeeq</a></b>(e1, e1dx, e2, e2dx)
+								</div>
+								<div class="description">is efrom == eto?
+FIXME: use indexes</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">GraphUtil.<b><a href="../symbols/GraphUtil.html#.edgeinarr">edgeinarr</a></b>(e, edx, arr, arrdx)
+								</div>
+								<div class="description">is e in arr?</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">GraphUtil.<b><a href="../symbols/GraphUtil.html#.edgeobjeq">edgeobjeq</a></b>(a, b)
+								</div>
+								<div class="description">Are two undirected edges equal? (based on nodeFrom and nodeTo)</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">GraphUtil.<b><a href="../symbols/GraphUtil.html#.name2nodedx">name2nodedx</a></b>(gr)
+								</div>
+								<div class="description">build a name -> node index for gr</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">GraphUtil.<b><a href="../symbols/GraphUtil.html#.neighbors">neighbors</a></b>(index, index)
+								</div>
+								<div class="description">get adjacent nodeset to n</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">GraphUtil.<b><a href="../symbols/GraphUtil.html#.noddeq">noddeq</a></b>(n1, n2)
+								</div>
+								<div class="description">is n1 == n2? (based on name)</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">GraphUtil.<b><a href="../symbols/GraphUtil.html#.nodeidinarr">nodeidinarr</a></b>(n, arr)
+								</div>
+								<div class="description">is n in arr? (based on id)
+if yes, return the index
+if no, return -1</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">GraphUtil.<b><a href="../symbols/GraphUtil.html#.nodeinarr">nodeinarr</a></b>(n, arr)
+								</div>
+								<div class="description">is n in arr? (based on name)
+if yes, return the index
+if no, return -1</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">GraphUtil.<b><a href="../symbols/GraphUtil.html#.simpleypos">simpleypos</a></b>(index, root)
+								</div>
+								<div class="description">Basic recursive y position proportional to edge weight</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+				
+				
+			
+<!-- ============================== events summary ======================== -->
+			
+
+<!-- ============================== constructor details ==================== -->		
+			
+			<div class="details"><a name="constructor"> </a>
+				<div class="sectionTitle">
+					Namespace Detail
+				</div>
+				
+				<div class="fixedFont">
+						<b>GraphUtil</b>
+				</div>
+				
+				<div class="description">
+					
+					
+				</div>
+				
+				
+				
+				
+					
+					
+					
+					
+					
+					
+					
+
+			</div>
+			
+
+<!-- ============================== field details ========================== -->		
+			
+
+<!-- ============================== method details ========================= -->		
+			
+				<div class="sectionTitle">
+					Method Detail
+				</div>
+				
+					<a name=".applyMultiY"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">GraphUtil.</span><b>applyMultiY</b>(g, keys)
+					
+					</div>
+					<div class="description">
+						Apply weighted y positions to nodes n[] in g based upon values 
+ in n.data[keys[0].key]...n.data[keys[k].key], weighted by keys[0].w...keys[k].w
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Graph}</span> <b>g</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<span class="light fixedFont">{Array[{key:string|w:Number}]}</span> <b>keys</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".applyY"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">GraphUtil.</span><b>applyY</b>(g, key)
+					
+					</div>
+					<div class="description">
+						Apply y positions to nodes n[] in g based upon value in n.data["key"]
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Graph}</span> <b>g</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<span class="light fixedFont">{string}</span> <b>key</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".bfsnumber"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">GraphUtil.</span><b>bfsnumber</b>(gr)
+					
+					</div>
+					<div class="description">
+						Apply a breadth-first numbering to the given graph
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>gr</b>
+									
+								</dt>
+								<dd>the graph to bfs-number (gr.topnode is taken to be the root)</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".dist"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">GraphUtil.</span><b>dist</b>(p1, p2)
+					
+					</div>
+					<div class="description">
+						Distance from p1 to p2
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>p1</b>
+									
+								</dt>
+								<dd>a point with .x and .y</dd>
+							
+								<dt>
+									<b>p2</b>
+									
+								</dt>
+								<dd>a point with .x and .y</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd>floating point euclidean distance</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".dupedge"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">GraphUtil.</span><b>dupedge</b>(e)
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Edge}</span> <b>e</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd>a 1-level deep copy of e</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".dupnode"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">GraphUtil.</span><b>dupnode</b>(n)
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Node}</span> <b>n</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd>a 1-level deep copy of n (no copied adjacencies), data copied by ref</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".edgeeq"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">GraphUtil.</span><b>edgeeq</b>(e1, e1dx, e2, e2dx)
+					
+					</div>
+					<div class="description">
+						is efrom == eto?
+FIXME: use indexes
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Edge}</span> <b>e1</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>e1dx</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<span class="light fixedFont">{Edge}</span> <b>e2</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>e2dx</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".edgeinarr"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">GraphUtil.</span><b>edgeinarr</b>(e, edx, arr, arrdx)
+					
+					</div>
+					<div class="description">
+						is e in arr?
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Edge}</span> <b>e</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<span class="light fixedFont">{int}</span> <b>edx</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<span class="light fixedFont">{Edge[]}</span> <b>arr</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<span class="light fixedFont">{int}</span> <b>arrdx</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".edgeobjeq"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">GraphUtil.</span><b>edgeobjeq</b>(a, b)
+					
+					</div>
+					<div class="description">
+						Are two undirected edges equal? (based on nodeFrom and nodeTo)
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Edge}</span> <b>a</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<span class="light fixedFont">{Edge}</span> <b>b</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".name2nodedx"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">GraphUtil.</span><b>name2nodedx</b>(gr)
+					
+					</div>
+					<div class="description">
+						build a name -> node index for gr
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>gr</b>
+									
+								</dt>
+								<dd>a graph</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd>map of string => int</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".neighbors"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">GraphUtil.</span><b>neighbors</b>(index, index)
+					
+					</div>
+					<div class="description">
+						get adjacent nodeset to n
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Node}</span> <b>index</b>
+									
+								</dt>
+								<dd>string => Node map</dd>
+							
+								<dt>
+									<b>index</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".noddeq"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">GraphUtil.</span><b>noddeq</b>(n1, n2)
+					
+					</div>
+					<div class="description">
+						is n1 == n2? (based on name)
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Node}</span> <b>n1</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<span class="light fixedFont">{Node}</span> <b>n2</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".nodeidinarr"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">GraphUtil.</span><b>nodeidinarr</b>(n, arr)
+					
+					</div>
+					<div class="description">
+						is n in arr? (based on id)
+if yes, return the index
+if no, return -1
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Node}</span> <b>n</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<span class="light fixedFont">{Node}</span> <b>arr</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".nodeinarr"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">GraphUtil.</span><b>nodeinarr</b>(n, arr)
+					
+					</div>
+					<div class="description">
+						is n in arr? (based on name)
+if yes, return the index
+if no, return -1
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Node}</span> <b>n</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<span class="light fixedFont">{Node[]}</span> <b>arr</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".simpleypos"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">GraphUtil.</span><b>simpleypos</b>(index, root)
+					
+					</div>
+					<div class="description">
+						Basic recursive y position proportional to edge weight
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{map}</span> <b>index</b>
+									
+								</dt>
+								<dd>the node name to object map</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Node}</span> <b>root</b>
+									
+								</dt>
+								<dd>the node we're currently considering</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					
+				
+			
+			
+<!-- ============================== event details ========================= -->		
+			
+			
+			<hr />
+		</div>
+
+		
+<!-- ============================== footer ================================= -->
+		<div class="fineprint" style="clear:both">
+			
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Sat May 03 2014 21:15:10 GMT-0700 (PDT)
+		</div>
+	</body>
+</html>

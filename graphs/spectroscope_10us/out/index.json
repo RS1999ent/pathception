@@ -1,0 +1,20 @@
+[{}
+,{"id":1680,"precursor":1680,"cost":6349068,"type":"Response time change"}
+,{"id":1300,"precursor":1300,"cost":3119508,"type":"Response time change"}
+,{"id":2378,"precursor":2378,"cost":1924645,"type":"Response time change"}
+,{"id":1176,"precursor":1176,"cost":592547,"type":"Response time change"}
+,{"id":1801,"precursor":1801,"cost":452146,"type":"Response time change"}
+,{"id":2404,"precursor":2404,"cost":387017,"type":"Response time change"}
+,{"id":1351,"precursor":1351,"cost":368852,"type":"Response time change"}
+,{"id":1259,"precursor":1300,"cost":345918,"type":"Structural mutation"}
+,{"id":1566,"precursor":1680,"cost":265634,"type":"Structural mutation"}
+,{"id":1996,"precursor":1996,"cost":216386,"type":"Response time change"}
+,{"id":1825,"precursor":1825,"cost":201019,"type":"Response time change"}
+,{"id":601,"precursor":1680,"cost":188144,"type":"Structural mutation"}
+,{"id":1764,"precursor":1764,"cost":187269,"type":"Response time change"}
+,{"id":1886,"precursor":1886,"cost":127466,"type":"Response time change"}
+,{"id":167,"precursor":167,"cost":107303,"type":"Response time change"}
+,{"id":143,"precursor":143,"cost":74256,"type":"Response time change"}
+,{"id":350,"precursor":350,"cost":18517,"type":"Response time change"}
+,{"id":422,"precursor":422,"cost":0,"type":"Structural mutation"}
+]

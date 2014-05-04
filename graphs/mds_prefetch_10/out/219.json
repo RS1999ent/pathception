@@ -1,0 +1,46 @@
+{
+  "nodes": [
+    {
+      "fontcolor": "blue", 
+      "shape": "plaintext", 
+      "id": "1", 
+      "label": "Cluster ID: 219\nSpecific Mutation Type: Originating cluster\nCost: 0\nOverall Mutation Type: Originating_Cluster\nCandidate originating clusters: \n\nAvg. response times: 25 us ; 0 us\nStandard Deviations: 12 us ; 0 us\nKS-Test2 P-value: -2.000\nCluster likelihood: 0.0005 ; 0.0000\nPercent makeup: 100 / 0\nrequests: 35 ; 0"
+    }, 
+    {
+      "id": "10247494867498830.10247494867561312", 
+      "label": "e10__t3__NFS_CACHE_BLOCK_OP_TYPE\nNFSCACHE_READ_HIT"
+    }, 
+    {
+      "id": "10247494867498830.10247494867578457", 
+      "label": "e10__t3__NFS3_READ_REPLY_TYPE\nDEFAULT"
+    }, 
+    {
+      "id": "10247494867498830.10247494867499505", 
+      "label": "e10__t3__NFS3_READ_CALL_TYPE\nDEFAULT"
+    }, 
+    {
+      "id": "10247494867498830.10247494867521217", 
+      "label": "e10__t3__NFS_CACHE_BLOCK_OP_TYPE\nNFSCACHE_READ_HIT"
+    }
+  ], 
+  "edges": [
+    {
+      "color": "black", 
+      "to": "10247494867498830.10247494867561312", 
+      "from": "10247494867498830.10247494867521217", 
+      "label": "p:-2.00\n   a: 8us / 0us\n   s: 8us / 0us"
+    }, 
+    {
+      "color": "black", 
+      "to": "10247494867498830.10247494867521217", 
+      "from": "10247494867498830.10247494867499505", 
+      "label": "p:-2.00\n   a: 6us / 0us\n   s: 7us / 0us"
+    }, 
+    {
+      "color": "black", 
+      "to": "10247494867498830.10247494867578457", 
+      "from": "10247494867498830.10247494867561312", 
+      "label": "p:-2.00\n   a: 11us / 0us\n   s: 9us / 0us"
+    }
+  ]
+}

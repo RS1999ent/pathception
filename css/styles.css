@@ -1,0 +1,174 @@
+html {
+    overflow: hidden;
+}
+body {
+    font-family: "Segoe UI", "Lucida Grande", sans-serif;
+    font-size: 90%;
+}
+#cont {
+    position: absolute;
+    top: 0px;
+    left: 50%; margin-left: -50%;
+    width: 100%; height: 100%;
+	background: #fff;
+}
+#grapharea {
+    width: 100%; height: 100%;
+}
+#grlist-cont {
+    position: absolute;
+    right: -250px;
+    top: 10px;
+    width: 210px;
+    /* height: 500px; */
+    bottom: 15px;
+    opacity: 0.8;
+    overflow-y: hidden;
+}
+#sel-problem {
+    font-size: 30px;
+}
+
+#grlist {
+    font-size: 15px;
+    position: absolute;
+    bottom: 0px;
+    top: 35px;
+    left: 5px;
+    right: 5px;
+    overflow-x: hidden;
+    padding: 0;
+    overflow-y: hidden;
+}
+#grlist li {
+    cursor: pointer;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    border-bottom: 1px solid white;
+}
+#grlist li:hover {
+    font-weight: bold;
+    opacity: 0.3;  
+}
+.sel {
+    font-weight: bold;
+    font-size: 18px;
+    background: url('blitzer/images/ui-bg_diagonals-thick_75_f3d8d8_40x40.png');
+    border: 3px solid #c00 !important;
+}
+
+#seloverlay {
+    opacity: 0.4;
+    border: 2px solid #ff0000;
+    background-color: #ff6666;
+    position: absolute;
+}
+
+#info-cont {
+    position: fixed;
+    left: -400px; top: 80px;
+}
+#slider-cont {
+    position: fixed;
+    left: -450px; top: 10px;
+}
+#help-cont {
+    position: fixed;
+    top: 0px;
+    padding: 8px;
+}
+#hist-cont {
+    position: fixed;
+    top: 80px;
+}
+#cdf-cont {
+    position: fixed;
+    left: -300px; top: 250px;
+    padding: 8px;
+}
+#uimode-cont {
+    position: fixed;
+    left: 50%;
+    bottom: -70px;
+    margin-left: -160px;
+    padding: 10px;
+}
+#legend-cont {
+    position: fixed;
+    left: 50%;
+    bottom: -70px;
+    margin-left: -350px;
+    padding: 10px;
+    height: 36px;
+}
+#legend-before, #legend-after {
+    font-size: 1.1em;
+    font-weight: bold;
+    padding: 10px 5px 20px 5px;
+    margin: 0;
+}
+#legend-before {
+    background: #EDC240;
+}
+#legend-after {
+    background: #AFD8F8;
+}
+
+#devmode-cont {
+    position: fixed;
+    left: -1px;
+    bottom: -70px;
+    padding: 6px;
+}
+#tasksel-cont {
+    position: fixed;
+    left: -1px;
+    bottom: -70px;
+    padding: 6px;
+}
+#scroll-cont {
+    position: fixed;
+    right: -40px;
+    width: 40px;
+    bottom: 0px;
+    top: 0px;
+    background-color: #ccc;
+}
+#diagram-cont {
+    position: fixed;
+    top: -300px;
+    right: 80px;   
+}
+#annotate-cont {
+    position: fixed;
+}
+#grader-cont {
+    position: fixed;
+    top: -100px;
+    left: 50%;
+    margin-left: -200px;
+    padding: 5px;
+}
+#rad-mark {
+    font-size: 1.2em;
+}
+#scrollbtn {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    height: 40px;
+    background-color: #666;
+    cursor: ns-resize;
+    border-radius: 20px;
+}
+
+.uiblock {
+    /*background: rgb(239, 222, 205);*/
+    box-shadow: 0px 0px 6px #888;
+    background: -webkit-linear-gradient(white, #dcdcdc);
+    background: -moz-linear-gradient(white, #dcdcdc);
+    background: -ms-linear-gradient(white, #dcdcdc);
+    border: 1px solid #999;    
+}

@@ -1,0 +1,49 @@
+{  "nodes": [
+     {"id":"1", "fontcolor":"blue","shape":"plaintext","label":"Cluster ID: 312\nSpecific Mutation Type: Structural mutation\nCost: 549785\nOverall Mutation Type: Structural_Mutation\nCandidate originating clusters: 1782 (10.5) 1751 (2.625) \n\nAvg. response times: 0 us ; 28570 us\nStandard Deviations: 0 us ; 8374 us\nKS-Test2 P-value: -1.000\nCluster likelihood: 0.0000 ; 0.0006\nPercent makeup: 0 / 100\nrequests: 0 ; 84"}
+    ,{"id":"1198894565301315.1198894565319150", "label":"e10__t3__DECODE_START_TYPE\nDEFAULT"}
+    ,{"id":"1198894565301315.1198894565356597", "label":"e10__t3__DECODE_END_TYPE\nDEFAULT"}
+    ,{"id":"1198894565301315.1198894565364472", "label":"e10__t3__SSIO_END_TYPE\nSSIO_READ_END"}
+    ,{"id":"1198894565301315.1198894565398170", "label":"e10__t3__NFS3_WRITE_REPLY_TYPE\nDEFAULT"}
+    ,{"id":"1198932853814407.1198894565265630", "label":"e10__t3__RPC_REPLY_TYPE\nDEFAULT"}
+    ,{"id":"1198894463788882.1198932753587190", "label":"e100__t3__FRONTEND_READ_CALL_TYPE\nDEFAULT"}
+    ,{"id":"1198894463788882.1198932823062015", "label":"e100__t3__FRONTEND_BLOCK_OP_START_TYPE\nFRONTEND_READ_MISS"}
+    ,{"id":"1198894463788882.1198932823093095", "label":"e100__t3__FRONTEND_BLOCK_OP_START_TYPE\nFRONTEND_FLUSH"}
+    ,{"id":"1198894463788882.1198932823545060", "label":"e5100__t3__BACKEND_BLOCK_OP_START_TYPE\nBACKEND_WRITE"}
+    ,{"id":"1198894463788882.1198932824182147", "label":"e5100__t3__BACKEND_BLOCK_OP_START_TYPE\nBACKEND_WRITE"}
+    ,{"id":"1198894463788882.1198932824346622", "label":"e100__t3__FRONTEND_BLOCK_OP_END_TYPE\nDEFAULT"}
+    ,{"id":"1198894463788882.1198932824364157", "label":"e100__t3__FRONTEND_BLOCK_OP_START_TYPE\nFRONTEND_EVICT"}
+    ,{"id":"1198894463788882.1198932824511937", "label":"e5100__t3__BACKEND_BLOCK_OP_START_TYPE\nBACKEND_READ"}
+    ,{"id":"1198894463788882.1198932853790415", "label":"e100__t3__FRONTEND_BLOCK_OP_END_TYPE\nDEFAULT"}
+    ,{"id":"1198894463788882.1198932853807950", "label":"e100__t3__FRONTEND_READ_REPLY_TYPE\nDEFAULT"}
+    ,{"id":"1198894463746507.1198894463782410", "label":"e10__t3__RPC_CALL_TYPE\nDEFAULT"}
+    ,{"id":"1198894463583645.1198894463584965", "label":"e10__t3__NFS3_WRITE_CALL_TYPE\nDEFAULT"}
+    ,{"id":"1198894463583645.1198894463611972", "label":"e10__t3__NFS_CACHE_BLOCK_OP_TYPE\nNFSCACHE_WRITE"}
+    ,{"id":"1198894463583645.1198894463638147", "label":"e10__t3__NFS_CACHE_BLOCK_OP_TYPE\nNFSCACHE_READ_MISS"}
+    ,{"id":"1198894463583645.1198894463672475", "label":"e10__t3__MDSCLIENT_LOOKUP_CALL_TYPE\nDEFAULT"}
+    ,{"id":"1198894463583645.1198894463707447", "label":"e10__t3__MDSCLIENT_LOOKUP_REPLY_TYPE\nMDSCLIENTCACHE_HIT"}
+    ,{"id":"1198894463583645.1198894463722905", "label":"e10__t3__SSIO_START_TYPE\nSSIO_READ_START"}
+  ],
+  "edges": [
+     {"from":"1198894463583645.1198894463584965", "to":"1198894463583645.1198894463611972", "color":"black","label":"p:-1.00\n   a: 0us / 7us\n   s: 0us / 2us"}
+    ,{"from":"1198894463583645.1198894463611972", "to":"1198894463583645.1198894463638147", "color":"black","label":"p:-1.00\n   a: 0us / 8us\n   s: 0us / 2us"}
+    ,{"from":"1198894463583645.1198894463638147", "to":"1198894463583645.1198894463672475", "color":"black","label":"p:-1.00\n   a: 0us / 10us\n   s: 0us / 1us"}
+    ,{"from":"1198894463583645.1198894463672475", "to":"1198894463583645.1198894463707447", "color":"black","label":"p:-1.00\n   a: 0us / 12us\n   s: 0us / 2us"}
+    ,{"from":"1198894463583645.1198894463707447", "to":"1198894463583645.1198894463722905", "color":"black","label":"p:-1.00\n   a: 0us / 5us\n   s: 0us / 1us"}
+    ,{"from":"1198894463583645.1198894463722905", "to":"1198894463746507.1198894463782410", "color":"black","label":"p:-1.00\n   a: 0us / 20us\n   s: 0us / 2us"}
+    ,{"from":"1198894463746507.1198894463782410", "to":"1198894463788882.1198932753587190", "color":"black","label":"p:-1.00\n   a: 0us / 14232us\n   s: 0us / 4187us"}
+    ,{"from":"1198894463788882.1198932753587190", "to":"1198894463788882.1198932823062015", "color":"black","label":"p:-1.00\n   a: 0us / 18329us\n   s: 0us / 9768us"}
+    ,{"from":"1198894463788882.1198932823062015", "to":"1198894463788882.1198932823093095", "color":"black","label":"p:-1.00\n   a: 0us / 10us\n   s: 0us / 1us"}
+    ,{"from":"1198894463788882.1198932823093095", "to":"1198894463788882.1198932823545060", "color":"black","label":"p:-1.00\n   a: 0us / 136us\n   s: 0us / 13us"}
+    ,{"from":"1198894463788882.1198932823545060", "to":"1198894463788882.1198932824182147", "color":"black","label":"p:-1.00\n   a: 0us / 224us\n   s: 0us / 13us"}
+    ,{"from":"1198894463788882.1198932824182147", "to":"1198894463788882.1198932824346622", "color":"black","label":"p:-1.00\n   a: 0us / 66us\n   s: 0us / 8us"}
+    ,{"from":"1198894463788882.1198932824346622", "to":"1198894463788882.1198932824364157", "color":"black","label":"p:-1.00\n   a: 0us / 6us\n   s: 0us / 0us"}
+    ,{"from":"1198894463788882.1198932824364157", "to":"1198894463788882.1198932824511937", "color":"black","label":"p:-1.00\n   a: 0us / 1375us\n   s: 0us / 5180us"}
+    ,{"from":"1198894463788882.1198932824511937", "to":"1198894463788882.1198932853790415", "color":"black","label":"p:-1.00\n   a: 0us / 7920us\n   s: 0us / 2948us"}
+    ,{"from":"1198894463788882.1198932853790415", "to":"1198894463788882.1198932853807950", "color":"black","label":"p:-1.00\n   a: 0us / 6us\n   s: 0us / 0us"}
+    ,{"from":"1198894463788882.1198932853807950", "to":"1198932853814407.1198894565265630", "color":"black","label":"p:0.00\n   a: 0us / 0us\n   s: 0us / 0us"}
+    ,{"from":"1198932853814407.1198894565265630", "to":"1198894565301315.1198894565319150", "color":"black","label":"p:-1.00\n   a: 0us / 16us\n   s: 0us / 2us"}
+    ,{"from":"1198894565301315.1198894565319150", "to":"1198894565301315.1198894565356597", "color":"black","label":"p:-1.00\n   a: 0us / 13us\n   s: 0us / 2us"}
+    ,{"from":"1198894565301315.1198894565356597", "to":"1198894565301315.1198894565364472", "color":"black","label":"p:-1.00\n   a: 0us / 3us\n   s: 0us / 0us"}
+    ,{"from":"1198894565301315.1198894565364472", "to":"1198894565301315.1198894565398170", "color":"black","label":"p:-1.00\n   a: 0us / 11us\n   s: 0us / 1us"}
+    ]
+}

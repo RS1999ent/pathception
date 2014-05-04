@@ -1,0 +1,41 @@
+{  "nodes": [
+     {"id":"1", "fontcolor":"blue","shape":"plaintext","label":"Cluster ID: 1680\nSpecific Mutation Type: Structural mutation\nCost: -2320349\nOverall Mutation Type: Structural_Mutation\nCandidate originating clusters: 1782 (4) \n\nAvg. response times: 0 us ; 24107 us\nStandard Deviations: 0 us ; 5332 us\nKS-Test2 P-value: -1.000\nCluster likelihood: 0.0000 ; 0.0071\nPercent makeup: 0 / 100\nrequests: 0 ; 937"}
+    ,{"id":"1198892727903952.1198892727924780", "label":"e10__t3__DECODE_START_TYPE\nDEFAULT"}
+    ,{"id":"1198892727903952.1198892727962475", "label":"e10__t3__DECODE_END_TYPE\nDEFAULT"}
+    ,{"id":"1198892727903952.1198892727971355", "label":"e10__t3__SSIO_END_TYPE\nSSIO_READ_END"}
+    ,{"id":"1198892727903952.1198892728002907", "label":"e10__t3__NFS3_WRITE_REPLY_TYPE\nDEFAULT"}
+    ,{"id":"1198931016382597.1198892727871567", "label":"e10__t3__RPC_REPLY_TYPE\nDEFAULT"}
+    ,{"id":"1198892645118667.1198930935113122", "label":"e100__t3__FRONTEND_READ_CALL_TYPE\nDEFAULT"}
+    ,{"id":"1198892645118667.1198930978692727", "label":"e100__t3__FRONTEND_BLOCK_OP_START_TYPE\nFRONTEND_READ_MISS"}
+    ,{"id":"1198892645118667.1198930978714770", "label":"e100__t3__FRONTEND_BLOCK_OP_START_TYPE\nFRONTEND_EVICT"}
+    ,{"id":"1198892645118667.1198930978829025", "label":"e5100__t3__BACKEND_BLOCK_OP_START_TYPE\nBACKEND_READ"}
+    ,{"id":"1198892645118667.1198931016361462", "label":"e100__t3__FRONTEND_BLOCK_OP_END_TYPE\nDEFAULT"}
+    ,{"id":"1198892645118667.1198931016377550", "label":"e100__t3__FRONTEND_READ_REPLY_TYPE\nDEFAULT"}
+    ,{"id":"1198892645069962.1198892645111835", "label":"e10__t3__RPC_CALL_TYPE\nDEFAULT"}
+    ,{"id":"1198892644911585.1198892644912717", "label":"e10__t3__NFS3_WRITE_CALL_TYPE\nDEFAULT"}
+    ,{"id":"1198892644911585.1198892644934407", "label":"e10__t3__NFS_CACHE_BLOCK_OP_TYPE\nNFSCACHE_WRITE"}
+    ,{"id":"1198892644911585.1198892644963327", "label":"e10__t3__NFS_CACHE_BLOCK_OP_TYPE\nNFSCACHE_READ_MISS"}
+    ,{"id":"1198892644911585.1198892644994422", "label":"e10__t3__MDSCLIENT_LOOKUP_CALL_TYPE\nDEFAULT"}
+    ,{"id":"1198892644911585.1198892645026425", "label":"e10__t3__MDSCLIENT_LOOKUP_REPLY_TYPE\nMDSCLIENTCACHE_HIT"}
+    ,{"id":"1198892644911585.1198892645042145", "label":"e10__t3__SSIO_START_TYPE\nSSIO_READ_START"}
+  ],
+  "edges": [
+     {"from":"1198892644911585.1198892644912717", "to":"1198892644911585.1198892644934407", "color":"black","label":"p:-1.00\n   a: 0us / 7us\n   s: 0us / 1us"}
+    ,{"from":"1198892644911585.1198892644934407", "to":"1198892644911585.1198892644963327", "color":"black","label":"p:-1.00\n   a: 0us / 8us\n   s: 0us / 1us"}
+    ,{"from":"1198892644911585.1198892644963327", "to":"1198892644911585.1198892644994422", "color":"black","label":"p:-1.00\n   a: 0us / 11us\n   s: 0us / 1us"}
+    ,{"from":"1198892644911585.1198892644994422", "to":"1198892644911585.1198892645026425", "color":"black","label":"p:-1.00\n   a: 0us / 12us\n   s: 0us / 1us"}
+    ,{"from":"1198892644911585.1198892645026425", "to":"1198892644911585.1198892645042145", "color":"black","label":"p:-1.00\n   a: 0us / 5us\n   s: 0us / 1us"}
+    ,{"from":"1198892644911585.1198892645042145", "to":"1198892645069962.1198892645111835", "color":"black","label":"p:-1.00\n   a: 0us / 21us\n   s: 0us / 2us"}
+    ,{"from":"1198892645069962.1198892645111835", "to":"1198892645118667.1198930935113122", "color":"black","label":"p:-1.00\n   a: 0us / 12000us\n   s: 0us / 2666us"}
+    ,{"from":"1198892645118667.1198930935113122", "to":"1198892645118667.1198930978692727", "color":"black","label":"p:-1.00\n   a: 0us / 15693us\n   s: 0us / 4301us"}
+    ,{"from":"1198892645118667.1198930978692727", "to":"1198892645118667.1198930978714770", "color":"black","label":"p:-1.00\n   a: 0us / 7us\n   s: 0us / 2us"}
+    ,{"from":"1198892645118667.1198930978714770", "to":"1198892645118667.1198930978829025", "color":"black","label":"p:-1.00\n   a: 0us / 45us\n   s: 0us / 129us"}
+    ,{"from":"1198892645118667.1198930978829025", "to":"1198892645118667.1198931016361462", "color":"black","label":"p:-1.00\n   a: 0us / 7781us\n   s: 0us / 2945us"}
+    ,{"from":"1198892645118667.1198931016361462", "to":"1198892645118667.1198931016377550", "color":"black","label":"p:-1.00\n   a: 0us / 6us\n   s: 0us / 1us"}
+    ,{"from":"1198892645118667.1198931016377550", "to":"1198931016382597.1198892727871567", "color":"black","label":"p:0.00\n   a: 0us / 0us\n   s: 0us / 0us"}
+    ,{"from":"1198931016382597.1198892727871567", "to":"1198892727903952.1198892727924780", "color":"black","label":"p:-1.00\n   a: 0us / 17us\n   s: 0us / 2us"}
+    ,{"from":"1198892727903952.1198892727924780", "to":"1198892727903952.1198892727962475", "color":"black","label":"p:-1.00\n   a: 0us / 13us\n   s: 0us / 1us"}
+    ,{"from":"1198892727903952.1198892727962475", "to":"1198892727903952.1198892727971355", "color":"black","label":"p:-1.00\n   a: 0us / 3us\n   s: 0us / 0us"}
+    ,{"from":"1198892727903952.1198892727971355", "to":"1198892727903952.1198892728002907", "color":"black","label":"p:-1.00\n   a: 0us / 11us\n   s: 0us / 1us"}
+    ]
+}

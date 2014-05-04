@@ -1,0 +1,116 @@
+{
+  "nodes": [
+    {
+      "id": "10245588242608215.10245588243362415", 
+      "label": "e4__t3__MDS_LOCK_ACQUIRE_TYPE\nDEFAULT"
+    }, 
+    {
+      "id": "10245588243761963.10245588244684095", 
+      "label": "e10__t3__MDS_LOOKUP_REPLY_TYPE\nMDSCLIENTCACHE_MISS"
+    }, 
+    {
+      "id": "10245588242608215.10245588243755213", 
+      "label": "e4__t3__RPC_SERVER_REPLY_SENT_TYPE\nDEFAULT"
+    }, 
+    {
+      "id": "10245588242608215.10245588243321998", 
+      "label": "e4__t3__RPC_SERVER_CALL_RECEIVED_TYPE\nDEFAULT"
+    }, 
+    {
+      "id": "10245588242504280.10245588242505517", 
+      "label": "e10__t3__NFS3_READ_CALL_TYPE\nDEFAULT"
+    }, 
+    {
+      "fontcolor": "blue", 
+      "shape": "plaintext", 
+      "id": "1", 
+      "label": "Cluster ID: 78\nSpecific Mutation Type: Originating cluster\nCost: 0\nOverall Mutation Type: Originating_Cluster\nCandidate originating clusters: \n\nAvg. response times: 357 us ; 0 us\nStandard Deviations: 76 us ; 0 us\nKS-Test2 P-value: -2.000\nCluster likelihood: 0.0006 ; 0.0000\nPercent makeup: 100 / 0\nrequests: 39 ; 0"
+    }, 
+    {
+      "id": "10245588242608215.10245588243398198", 
+      "label": "e4__t3__MDS_LOCK_RELEASE_TYPE\nDEFAULT"
+    }, 
+    {
+      "id": "10245588242504280.10245588242600130", 
+      "label": "e10__t3__RPC_CALL_TYPE\nDEFAULT"
+    }, 
+    {
+      "id": "10245588242504280.10245588242531077", 
+      "label": "e10__t3__NFS_CACHE_BLOCK_OP_TYPE\nNFSCACHE_READ_MISS"
+    }, 
+    {
+      "id": "10245588243761963.10245588244767300", 
+      "label": "e10__t3__NFS3_READ_REPLY_TYPE\nDEFAULT"
+    }, 
+    {
+      "id": "10245588243761963.10245588244370085", 
+      "label": "e10__t3__RPC_REPLY_TYPE\nDEFAULT"
+    }, 
+    {
+      "id": "10245588242504280.10245588242565810", 
+      "label": "e10__t3__MDS_LOOKUP_CALL_TYPE\nDEFAULT"
+    }
+  ], 
+  "edges": [
+    {
+      "color": "black", 
+      "to": "10245588242608215.10245588243362415", 
+      "from": "10245588242608215.10245588243321998", 
+      "label": "p:-2.00\n   a: 17us / 0us\n   s: 2us / 0us"
+    }, 
+    {
+      "color": "black", 
+      "to": "10245588242504280.10245588242600130", 
+      "from": "10245588242504280.10245588242565810", 
+      "label": "p:-2.00\n   a: 13us / 0us\n   s: 5us / 0us"
+    }, 
+    {
+      "color": "black", 
+      "to": "10245588242504280.10245588242565810", 
+      "from": "10245588242504280.10245588242531077", 
+      "label": "p:-2.00\n   a: 6us / 0us\n   s: 1us / 0us"
+    }, 
+    {
+      "color": "black", 
+      "to": "10245588243761963.10245588244684095", 
+      "from": "10245588243761963.10245588244370085", 
+      "label": "p:-2.00\n   a: 82us / 0us\n   s: 8us / 0us"
+    }, 
+    {
+      "color": "black", 
+      "to": "10245588242608215.10245588243398198", 
+      "from": "10245588242608215.10245588243362415", 
+      "label": "p:-2.00\n   a: 13us / 0us\n   s: 1us / 0us"
+    }, 
+    {
+      "color": "black", 
+      "to": "10245588243761963.10245588244767300", 
+      "from": "10245588243761963.10245588244684095", 
+      "label": "p:-2.00\n   a: 24us / 0us\n   s: 6us / 0us"
+    }, 
+    {
+      "color": "black", 
+      "to": "10245588242608215.10245588243321998", 
+      "from": "10245588242504280.10245588242600130", 
+      "label": "p:-2.00\n   a: 28us / 0us\n   s: 11us / 0us"
+    }, 
+    {
+      "color": "black", 
+      "to": "10245588242608215.10245588243755213", 
+      "from": "10245588242608215.10245588243398198", 
+      "label": "p:-2.00\n   a: 84us / 0us\n   s: 17us / 0us"
+    }, 
+    {
+      "color": "black", 
+      "to": "10245588243761963.10245588244370085", 
+      "from": "10245588242608215.10245588243755213", 
+      "label": "p:-2.00\n   a: 28us / 0us\n   s: 11us / 0us"
+    }, 
+    {
+      "color": "black", 
+      "to": "10245588242504280.10245588242531077", 
+      "from": "10245588242504280.10245588242505517", 
+      "label": "p:-2.00\n   a: 7us / 0us\n   s: 1us / 0us"
+    }
+  ]
+}

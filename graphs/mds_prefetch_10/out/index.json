@@ -1,0 +1,24 @@
+[{}
+,{"id":205,"precursor":190,"cost":21735522,"type":"Structural mutation"}
+,{"id":194,"precursor":232,"cost":983064,"type":"Structural mutation"}
+,{"id":191,"precursor":191,"cost":435539,"type":"Response time change"}
+,{"id":49,"precursor":232,"cost":204561,"type":"Structural mutation"}
+,{"id":117,"precursor":176,"cost":151518,"type":"Structural mutation"}
+,{"id":223,"precursor":223,"cost":147687,"type":"Response time change"}
+,{"id":95,"precursor":176,"cost":134353,"type":"Structural mutation"}
+,{"id":107,"precursor":232,"cost":95507,"type":"Structural mutation"}
+,{"id":204,"precursor":78,"cost":89277,"type":"Structural mutation"}
+,{"id":195,"precursor":195,"cost":80705,"type":"Response time change"}
+,{"id":21,"precursor":21,"cost":32730,"type":"Response time change"}
+,{"id":16,"precursor":260,"cost":10940,"type":"Structural mutation"}
+,{"id":74,"precursor":74,"cost":6039,"type":"Response time change"}
+,{"id":164,"precursor":144,"cost":3787,"type":"Structural mutation"}
+,{"id":87,"precursor":87,"cost":0,"type":"Structural mutation"}
+,{"id":206,"precursor":206,"cost":0,"type":"Structural mutation"}
+,{"id":249,"precursor":249,"cost":0,"type":"Structural mutation"}
+,{"id":223,"precursor":223,"cost":0,"type":"Structural mutation"}
+,{"id":240,"precursor":240,"cost":0,"type":"Structural mutation"}
+,{"id":256,"precursor":84,"cost":0,"type":"Structural mutation"}
+,{"id":86,"precursor":219,"cost":0,"type":"Structural mutation"}
+,{"id":96,"precursor":190,"cost":0,"type":"Structural mutation"}
+]

@@ -1,0 +1,41 @@
+{  "nodes": [
+     {"id":"1", "fontcolor":"blue","shape":"plaintext","label":"Cluster ID: 2150\nSpecific Mutation Type: Response time change\nCost: 960832\nOverall Mutation Type: Response_Time_Change\nCandidate originating clusters: \n\nAvg. response times: 34573 us ; 51140 us\nStandard Deviations: 19134 us ; 43415 us\nKS-Test2 P-value: 0.038\nCluster likelihood: 0.0003 ; 0.0003\nPercent makeup: 50 / 50\nrequests: 58 ; 57"}
+    ,{"id":"2588900958737032.2588900958759855", "label":"e10__t3__DECODE_START_TYPE\nDEFAULT"}
+    ,{"id":"2588900958737032.2588900958797160", "label":"e10__t3__DECODE_END_TYPE\nDEFAULT"}
+    ,{"id":"2588900958737032.2588900958807945", "label":"e10__t3__SSIO_END_TYPE\nSSIO_READ_END"}
+    ,{"id":"2588900958737032.2588900958843442", "label":"e10__t3__NFS3_WRITE_REPLY_TYPE\nDEFAULT"}
+    ,{"id":"2588936501957752.2588900958698902", "label":"e10__t3__RPC_REPLY_TYPE\nDEFAULT"}
+    ,{"id":"2588900921528827.2588936466566512", "label":"e100__t3__FRONTEND_READ_CALL_TYPE\nDEFAULT"}
+    ,{"id":"2588900921528827.2588936466619747", "label":"e100__t3__FRONTEND_BLOCK_OP_START_TYPE\nFRONTEND_READ_MISS"}
+    ,{"id":"2588900921528827.2588936466635430", "label":"e100__t3__FRONTEND_BLOCK_OP_START_TYPE\nFRONTEND_EVICT"}
+    ,{"id":"2588900921528827.2588936466756187", "label":"e5100__t3__BACKEND_BLOCK_OP_START_TYPE\nBACKEND_READ"}
+    ,{"id":"2588900921528827.2588936501932905", "label":"e100__t3__FRONTEND_BLOCK_OP_END_TYPE\nDEFAULT"}
+    ,{"id":"2588900921528827.2588936501950807", "label":"e100__t3__FRONTEND_READ_REPLY_TYPE\nDEFAULT"}
+    ,{"id":"2588900921486190.2588900921521470", "label":"e10__t3__RPC_CALL_TYPE\nDEFAULT"}
+    ,{"id":"2588900921306257.2588900921307397", "label":"e10__t3__NFS3_WRITE_CALL_TYPE\nDEFAULT"}
+    ,{"id":"2588900921306257.2588900921330625", "label":"e10__t3__NFS_CACHE_BLOCK_OP_TYPE\nNFSCACHE_WRITE"}
+    ,{"id":"2588900921306257.2588900921352937", "label":"e10__t3__NFS_CACHE_BLOCK_OP_TYPE\nNFSCACHE_READ_MISS"}
+    ,{"id":"2588900921306257.2588900921385052", "label":"e10__t3__MDSCLIENT_LOOKUP_CALL_TYPE\nDEFAULT"}
+    ,{"id":"2588900921306257.2588900921447947", "label":"e10__t3__MDSCLIENT_LOOKUP_REPLY_TYPE\nMDSCLIENTCACHE_HIT"}
+    ,{"id":"2588900921306257.2588900921464057", "label":"e10__t3__SSIO_START_TYPE\nSSIO_READ_START"}
+  ],
+  "edges": [
+     {"from":"2588900921306257.2588900921307397", "to":"2588900921306257.2588900921330625", "color":"black","label":"p:1.00\n   a: 18us / 14us\n   s: 57us / 47us"}
+    ,{"from":"2588900921306257.2588900921330625", "to":"2588900921306257.2588900921352937", "color":"black","label":"p:1.00\n   a: 8us / 8us\n   s: 3us / 2us"}
+    ,{"from":"2588900921306257.2588900921352937", "to":"2588900921306257.2588900921385052", "color":"black","label":"p:1.00\n   a: 10us / 9us\n   s: 2us / 1us"}
+    ,{"from":"2588900921306257.2588900921385052", "to":"2588900921306257.2588900921447947", "color":"black","label":"p:1.00\n   a: 18us / 18us\n   s: 4us / 2us"}
+    ,{"from":"2588900921306257.2588900921447947", "to":"2588900921306257.2588900921464057", "color":"black","label":"p:1.00\n   a: 5us / 4us\n   s: 1us / 1us"}
+    ,{"from":"2588900921306257.2588900921464057", "to":"2588900921486190.2588900921521470", "color":"black","label":"p:1.00\n   a: 17us / 17us\n   s: 3us / 3us"}
+    ,{"from":"2588900921486190.2588900921521470", "to":"2588900921528827.2588936466566512", "color":"red","label":"p:0.04\n   a: 17226us / 25511us\n   s: 9567us / 21704us"}
+    ,{"from":"2588900921528827.2588936466566512", "to":"2588900921528827.2588936466619747", "color":"black","label":"p:0.09\n   a: 22584us / 30432us\n   s: 15563us / 25901us"}
+    ,{"from":"2588900921528827.2588936466619747", "to":"2588900921528827.2588936466635430", "color":"black","label":"p:1.00\n   a: 6us / 7us\n   s: 1us / 2us"}
+    ,{"from":"2588900921528827.2588936466635430", "to":"2588900921528827.2588936466756187", "color":"black","label":"p:0.98\n   a: 430us / 663us\n   s: 2030us / 3526us"}
+    ,{"from":"2588900921528827.2588936466756187", "to":"2588900921528827.2588936501932905", "color":"red","label":"p:0.02\n   a: 10968us / 19463us\n   s: 7581us / 20147us"}
+    ,{"from":"2588900921528827.2588936501932905", "to":"2588900921528827.2588936501950807", "color":"black","label":"p:1.00\n   a: 5us / 6us\n   s: 0us / 1us"}
+    ,{"from":"2588900921528827.2588936501950807", "to":"2588936501957752.2588900958698902", "color":"black","label":"p:0.00\n   a: 0us / 0us\n   s: 0us / 0us"}
+    ,{"from":"2588936501957752.2588900958698902", "to":"2588900958737032.2588900958759855", "color":"black","label":"p:1.00\n   a: 18us / 18us\n   s: 3us / 5us"}
+    ,{"from":"2588900958737032.2588900958759855", "to":"2588900958737032.2588900958797160", "color":"black","label":"p:1.00\n   a: 12us / 12us\n   s: 1us / 2us"}
+    ,{"from":"2588900958737032.2588900958797160", "to":"2588900958737032.2588900958807945", "color":"black","label":"p:1.00\n   a: 3us / 3us\n   s: 1us / 1us"}
+    ,{"from":"2588900958737032.2588900958807945", "to":"2588900958737032.2588900958843442", "color":"black","label":"p:1.00\n   a: 12us / 12us\n   s: 2us / 2us"}
+    ]
+}

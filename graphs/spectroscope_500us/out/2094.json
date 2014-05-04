@@ -1,0 +1,37 @@
+{  "nodes": [
+     {"id":"1", "fontcolor":"blue","shape":"plaintext","label":"Cluster ID: 2094\nSpecific Mutation Type: Structural mutation\nCost: 1745354\nOverall Mutation Type: Structural_Mutation\nCandidate originating clusters: 2091 (1.07142857142857) \n\nAvg. response times: 30729 us ; 32226 us\nStandard Deviations: 24267 us ; 27443 us\nKS-Test2 P-value: 0.418\nCluster likelihood: 0.0023 ; 0.0026\nPercent makeup: 47 / 53\nrequests: 481 ; 538"}
+    ,{"id":"2587445196415267.2587445196428955", "label":"e10__t3__DECODE_START_TYPE\nDEFAULT"}
+    ,{"id":"2587445196415267.2587445196461925", "label":"e10__t3__DECODE_END_TYPE\nDEFAULT"}
+    ,{"id":"2587445196415267.2587445196468375", "label":"e10__t3__SSIO_END_TYPE\nSSIO_READ_END"}
+    ,{"id":"2587445196415267.2587445196490200", "label":"e10__t3__NFS3_READ_REPLY_TYPE\nDEFAULT"}
+    ,{"id":"2587480743545400.2587445196369840", "label":"e10__t3__RPC_REPLY_TYPE\nDEFAULT"}
+    ,{"id":"2587445177029642.2587480725627367", "label":"e100__t3__FRONTEND_READ_CALL_TYPE\nDEFAULT"}
+    ,{"id":"2587445177029642.2587480725671205", "label":"e100__t3__FRONTEND_BLOCK_OP_START_TYPE\nFRONTEND_READ_MISS"}
+    ,{"id":"2587445177029642.2587480725808162", "label":"e5100__t3__BACKEND_BLOCK_OP_START_TYPE\nBACKEND_READ"}
+    ,{"id":"2587445177029642.2587480743522097", "label":"e100__t3__FRONTEND_BLOCK_OP_END_TYPE\nDEFAULT"}
+    ,{"id":"2587445177029642.2587480743539812", "label":"e100__t3__FRONTEND_READ_REPLY_TYPE\nDEFAULT"}
+    ,{"id":"2587445176993552.2587445177024647", "label":"e10__t3__RPC_CALL_TYPE\nDEFAULT"}
+    ,{"id":"2587445176845435.2587445176846725", "label":"e10__t3__NFS3_READ_CALL_TYPE\nDEFAULT"}
+    ,{"id":"2587445176845435.2587445176882845", "label":"e10__t3__NFS_CACHE_BLOCK_OP_TYPE\nNFSCACHE_READ_MISS"}
+    ,{"id":"2587445176845435.2587445176912470", "label":"e10__t3__MDSCLIENT_LOOKUP_CALL_TYPE\nDEFAULT"}
+    ,{"id":"2587445176845435.2587445176967235", "label":"e10__t3__MDSCLIENT_LOOKUP_REPLY_TYPE\nMDSCLIENTCACHE_HIT"}
+    ,{"id":"2587445176845435.2587445176979145", "label":"e10__t3__SSIO_START_TYPE\nSSIO_READ_START"}
+  ],
+  "edges": [
+     {"from":"2587445176845435.2587445176846725", "to":"2587445176845435.2587445176882845", "color":"black","label":"p:1.00\n   a: 13us / 13us\n   s: 15us / 3us"}
+    ,{"from":"2587445176845435.2587445176882845", "to":"2587445176845435.2587445176912470", "color":"black","label":"p:1.00\n   a: 11us / 11us\n   s: 2us / 2us"}
+    ,{"from":"2587445176845435.2587445176912470", "to":"2587445176845435.2587445176967235", "color":"black","label":"p:1.00\n   a: 20us / 19us\n   s: 3us / 3us"}
+    ,{"from":"2587445176845435.2587445176967235", "to":"2587445176845435.2587445176979145", "color":"black","label":"p:1.00\n   a: 5us / 5us\n   s: 1us / 1us"}
+    ,{"from":"2587445176845435.2587445176979145", "to":"2587445176993552.2587445177024647", "color":"black","label":"p:1.00\n   a: 21us / 19us\n   s: 21us / 8us"}
+    ,{"from":"2587445176993552.2587445177024647", "to":"2587445177029642.2587480725627367", "color":"black","label":"p:0.61\n   a: 15306us / 16056us\n   s: 12134us / 13722us"}
+    ,{"from":"2587445177029642.2587480725627367", "to":"2587445177029642.2587480725671205", "color":"black","label":"p:0.67\n   a: 18579us / 19839us\n   s: 16531us / 19319us"}
+    ,{"from":"2587445177029642.2587480725671205", "to":"2587445177029642.2587480725808162", "color":"black","label":"p:1.00\n   a: 782us / 554us\n   s: 3153us / 2620us"}
+    ,{"from":"2587445177029642.2587480725808162", "to":"2587445177029642.2587480743522097", "color":"black","label":"p:0.21\n   a: 10775us / 11242us\n   s: 10404us / 11499us"}
+    ,{"from":"2587445177029642.2587480743522097", "to":"2587445177029642.2587480743539812", "color":"black","label":"p:1.00\n   a: 6us / 6us\n   s: 1us / 2us"}
+    ,{"from":"2587445177029642.2587480743539812", "to":"2587480743545400.2587445196369840", "color":"black","label":"p:0.00\n   a: 0us / 0us\n   s: 0us / 0us"}
+    ,{"from":"2587480743545400.2587445196369840", "to":"2587445196415267.2587445196428955", "color":"black","label":"p:1.00\n   a: 21us / 20us\n   s: 25us / 16us"}
+    ,{"from":"2587445196415267.2587445196428955", "to":"2587445196415267.2587445196461925", "color":"black","label":"p:1.00\n   a: 13us / 12us\n   s: 2us / 2us"}
+    ,{"from":"2587445196415267.2587445196461925", "to":"2587445196415267.2587445196468375", "color":"black","label":"p:1.00\n   a: 3us / 3us\n   s: 1us / 1us"}
+    ,{"from":"2587445196415267.2587445196468375", "to":"2587445196415267.2587445196490200", "color":"black","label":"p:1.00\n   a: 10us / 10us\n   s: 2us / 3us"}
+    ]
+}

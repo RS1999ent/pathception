@@ -1,0 +1,11 @@
+{  "nodes": [
+     {"id":"1", "fontcolor":"blue","shape":"plaintext","label":"Cluster ID: 4\nSpecific Mutation Type: Structural mutation\nCost: 0\nOverall Mutation Type: Structural_Mutation\nCandidate originating clusters: \n\nAvg. response times: 0 us ; 1147 us\nStandard Deviations: 0 us ; 1239 us\nKS-Test2 P-value: -1.000\nCluster likelihood: 0.0000 ; 0.3741\nPercent makeup: 0 / 100\nrequests: 0 ; 200823"}
+    ,{"id":"6370914425049472.6370914425050020", "label":"e10__t3__NFS3_READ_CALL_TYPE\nDEFAULT"}
+    ,{"id":"6370914425049472.6370914425070382", "label":"e10__t3__NFS_CACHE_BLOCK_OP_TYPE\nNFSCACHE_READ_HIT"}
+    ,{"id":"6370914425049472.6370914425084040", "label":"e10__t3__NFS3_READ_REPLY_TYPE\nDEFAULT"}
+  ],
+  "edges": [
+     {"from":"6370914425049472.6370914425050020", "to":"6370914425049472.6370914425070382", "color":"black","label":"p:-1.00\n   a: 0us / 1142us\n   s: 0us / 1239us"}
+    ,{"from":"6370914425049472.6370914425070382", "to":"6370914425049472.6370914425084040", "color":"black","label":"p:-1.00\n   a: 0us / 5us\n   s: 0us / 2us"}
+    ]
+}

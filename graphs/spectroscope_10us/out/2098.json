@@ -1,0 +1,11 @@
+{  "nodes": [
+     {"id":"1", "fontcolor":"blue","shape":"plaintext","label":"Cluster ID: 2098\nSpecific Mutation Type: Originating cluster\nCost: 0\nOverall Mutation Type: Originating_Cluster\nCandidate originating clusters: \n\nAvg. response times: 22 us ; 23 us\nStandard Deviations: 57 us ; 64 us\nKS-Test2 P-value: 0.990\nCluster likelihood: 0.2282 ; 0.2284\nPercent makeup: 50 / 50\nrequests: 48083 ; 47716"}
+    ,{"id":"2586295227960757.2586295227962130", "label":"e10__t3__NFS3_WRITE_CALL_TYPE\nDEFAULT"}
+    ,{"id":"2586295227960757.2586295227985815", "label":"e10__t3__NFS_CACHE_BLOCK_OP_TYPE\nNFSCACHE_WRITE"}
+    ,{"id":"2586295227960757.2586295228173420", "label":"e10__t3__NFS3_WRITE_REPLY_TYPE\nDEFAULT"}
+  ],
+  "edges": [
+     {"from":"2586295227960757.2586295227962130", "to":"2586295227960757.2586295227985815", "color":"black","label":"p:0.99\n   a: 9us / 9us\n   s: 56us / 64us"}
+    ,{"from":"2586295227960757.2586295227985815", "to":"2586295227960757.2586295228173420", "color":"black","label":"p:1.00\n   a: 13us / 13us\n   s: 10us / 9us"}
+    ]
+}

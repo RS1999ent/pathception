@@ -1,0 +1,162 @@
+{
+  "nodes": [
+    {
+      "id": "10247504419822095.10247504420258708", 
+      "label": "e4__t3__RPC_SERVER_REPLY_SENT_TYPE\nDEFAULT"
+    }, 
+    {
+      "id": "10247504419822095.10247504420021963", 
+      "label": "e4__t3__MDS_LOCK_ACQUIRE_TYPE\nDEFAULT"
+    }, 
+    {
+      "id": "10247504419822095.10247504420048738", 
+      "label": "e4__t3__MDS_LOCK_RELEASE_TYPE\nDEFAULT"
+    }, 
+    {
+      "id": "10247504419309732.10247504419816020", 
+      "label": "e10__t3__RPC_CALL_TYPE\nDEFAULT"
+    }, 
+    {
+      "id": "10247504419309732.10247504419576800", 
+      "label": "e10__t3__NFS_DIRCACHE_CALL_TYPE\nDEFAULT"
+    }, 
+    {
+      "id": "10247504420264010.10247504420418427", 
+      "label": "e10__t3__RPC_REPLY_TYPE\nDEFAULT"
+    }, 
+    {
+      "id": "10247504419309732.10247504420709502", 
+      "label": "e10__t3__NFS3_LOOKUP_REPLY_TYPE\nDEFAULT"
+    }, 
+    {
+      "id": "10247504420264010.10247504420678527", 
+      "label": "e10__t3__MDS_LOOKUP_REPLY_TYPE\nMDSCLIENTCACHE_MISS"
+    }, 
+    {
+      "fontcolor": "blue", 
+      "shape": "plaintext", 
+      "id": "1", 
+      "label": "Cluster ID: 244\nSpecific Mutation Type: Originating cluster\nCost: 0\nOverall Mutation Type: Originating_Cluster\nCandidate originating clusters: \n\nAvg. response times: 484 us ; 0 us\nStandard Deviations: 47 us ; 0 us\nKS-Test2 P-value: -2.000\nCluster likelihood: 0.0005 ; 0.0000\nPercent makeup: 100 / 0\nrequests: 35 ; 0"
+    }, 
+    {
+      "id": "10247504420264010.10247504420696287", 
+      "label": "e10__t3__MDS_GETATTR_REPLY_TYPE\nDEFAULT"
+    }, 
+    {
+      "id": "10247504419309732.10247504419787130", 
+      "label": "e10__t3__MDS_LOOKUP_CALL_TYPE\nDEFAULT"
+    }, 
+    {
+      "id": "10247504419309732.10247504419743810", 
+      "label": "e10__t3__NFS_DIRCACHE_REPLY_TYPE\nNFSDIRCACHE_READ_MISS"
+    }, 
+    {
+      "id": "10247504419309732.10247504419310775", 
+      "label": "e10__t3__NFS3_LOOKUP_CALL_TYPE\nDEFAULT"
+    }, 
+    {
+      "id": "10247504419822095.10247504419962968", 
+      "label": "e4__t3__RPC_SERVER_CALL_RECEIVED_TYPE\nDEFAULT"
+    }, 
+    {
+      "id": "10247504419309732.10247504419772310", 
+      "label": "e10__t3__MDS_GETATTR_CALL_TYPE\nDEFAULT"
+    }, 
+    {
+      "id": "10247504419309732.10247504419661535", 
+      "label": "e10__t3__NFS_CACHE_BLOCK_OP_TYPE\nNFSCACHE_READ_HIT"
+    }
+  ], 
+  "edges": [
+    {
+      "color": "black", 
+      "to": "10247504419822095.10247504420021963", 
+      "from": "10247504419822095.10247504419962968", 
+      "label": "p:-2.00\n   a: 46us / 0us\n   s: 41us / 0us"
+    }, 
+    {
+      "color": "black", 
+      "to": "10247504420264010.10247504420678527", 
+      "from": "10247504420264010.10247504420418427", 
+      "label": "p:-2.00\n   a: 87us / 0us\n   s: 1us / 0us"
+    }, 
+    {
+      "color": "black", 
+      "to": "10247504419822095.10247504420048738", 
+      "from": "10247504419822095.10247504420021963", 
+      "label": "p:-2.00\n   a: 9us / 0us\n   s: 0us / 0us"
+    }, 
+    {
+      "color": "black", 
+      "to": "10247504419309732.10247504419576800", 
+      "from": "10247504419309732.10247504419310775", 
+      "label": "p:-2.00\n   a: 77us / 0us\n   s: 15us / 0us"
+    }, 
+    {
+      "color": "black", 
+      "to": "10247504419309732.10247504419661535", 
+      "from": "10247504419309732.10247504419576800", 
+      "label": "p:-2.00\n   a: 27us / 0us\n   s: 1us / 0us"
+    }, 
+    {
+      "color": "black", 
+      "to": "10247504419309732.10247504419772310", 
+      "from": "10247504419309732.10247504419743810", 
+      "label": "p:-2.00\n   a: 9us / 0us\n   s: 2us / 0us"
+    }, 
+    {
+      "color": "black", 
+      "to": "10247504420264010.10247504420418427", 
+      "from": "10247504419309732.10247504419816020", 
+      "label": "p:-2.00\n   a: 231us / 0us\n   s: 43us / 0us"
+    }, 
+    {
+      "color": "black", 
+      "to": "10247504419822095.10247504420258708", 
+      "from": "10247504419822095.10247504420048738", 
+      "label": "p:-2.00\n   a: 71us / 0us\n   s: 1us / 0us"
+    }, 
+    {
+      "color": "black", 
+      "to": "10247504419309732.10247504420709502", 
+      "from": "10247504419309732.10247504419816020", 
+      "label": "p:-2.00\n   a: 329us / 0us\n   s: 43us / 0us"
+    }, 
+    {
+      "color": "black", 
+      "to": "10247504419309732.10247504419816020", 
+      "from": "10247504419309732.10247504419787130", 
+      "label": "p:-2.00\n   a: 10us / 0us\n   s: 1us / 0us"
+    }, 
+    {
+      "color": "black", 
+      "to": "10247504419309732.10247504419787130", 
+      "from": "10247504419309732.10247504419772310", 
+      "label": "p:-2.00\n   a: 5us / 0us\n   s: 1us / 0us"
+    }, 
+    {
+      "color": "black", 
+      "to": "10247504419309732.10247504419743810", 
+      "from": "10247504419309732.10247504419661535", 
+      "label": "p:-2.00\n   a: 27us / 0us\n   s: 2us / 0us"
+    }, 
+    {
+      "color": "black", 
+      "to": "10247504419822095.10247504419962968", 
+      "from": "10247504419309732.10247504419816020", 
+      "label": "p:-2.00\n   a: 49us / 0us\n   s: 1us / 0us"
+    }, 
+    {
+      "color": "black", 
+      "to": "10247504420264010.10247504420696287", 
+      "from": "10247504420264010.10247504420678527", 
+      "label": "p:-2.00\n   a: 6us / 0us\n   s: 1us / 0us"
+    }, 
+    {
+      "color": "black", 
+      "to": "10247504420264010.10247504420418427", 
+      "from": "10247504419822095.10247504420258708", 
+      "label": "p:-2.00\n   a: 56us / 0us\n   s: 3us / 0us"
+    }
+  ]
+}

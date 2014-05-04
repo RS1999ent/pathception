@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="styles.css" type="text/css" media="screen">
+</head>
+<body>
+<h1>Request Flow Graph Visualization</h1>
+
+<h2>Overview</h2>
+<p>The request flow graph visualizer is a tool for visualizing the request flow differences output by <a href="http://www.usenix.org/event/nsdi11/tech/slides/sambasivan.pdf" target="_blank">Spectroscope</a>. 
+</p>
+
+<h2>Operation</h2>
+<p>This tool takes as input a collection of graph clusters generated from end-to-end traces in <a href="www.graphviz.org/doc/info/lang.html" target="_blank">dot</a> format. The Spectroscope Cluster IDs and metadata are used to identify precursor-mutation pairs, which are compiled into a JSON index. The dot graphs themselves are also lexed into JSON, and are then loaded with XHR into the visualization page. This page performs parsing, graph differencing and styling, and displays the precursor-mutation difference pairs with the help of the <a href="http://thejit.org/" target="_blank">JIT</a> library.
+</p>
+
+<h2>Code Documentation</h2>
+<p>Documentation for the javascript and visualization components are available in the <a href="gen/index.html" target="mainfr">jsdoc</a> (also linked on the left). Formatted js code is also there under "File Index."
+</p>
+
+<h2>Directory Layout</h2>
+<dl style="padding-left: 10px">
+<dt class="ic ic-folder">css</dt><dd>Style files</dd>
+<dt class="ic ic-folder">doc</dt><dd>Documentation - you're here!</dd>
+<dt class="ic ic-folder">graphs</dt><dd>Statically dumped graph files</dd>
+<dt class="ic ic-folder">js</dt><dd>The bulk of the code (<a href="gen/index.html" target="mainfr">jsdoc</a> is generated from this)</dd>
+<dt class="ic ic-folder">lib</dt><dd>Javascript libraries (JIT, jQuery)</dd>
+<dt class="ic ic-code">index.html</dt><dd>Main page</dd>
+<dt class="ic ic-text">Makefile</dt><dd>Build documentation</dd>
+</dl>
+
+<h2>License</h2>
+<p>Licenses of libraries are contained within the libraries themselves; please see the <tt>lib</tt> folder.</p>
+<p>Other source is licensed as:</p>
+<pre>
+Copyright (c) 2014, Carnegie Mellon University.
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions
+are met:
+1. Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+2. Redistributions in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in the
+   documentation and/or other materials provided with the distribution.
+3. Neither the name of the University nor the names of its contributors
+   may be used to endorse or promote products derived from this software
+   without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT
+HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS
+OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED
+AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY
+WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+POSSIBILITY OF SUCH DAMAGE.
+</pre>
+
+</body>
+</html>
