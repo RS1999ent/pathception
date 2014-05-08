@@ -28,6 +28,7 @@
 # POSSIBILITY OF SUCH DAMAGE.
 #
 
+# Convert dot-format graphs to the json format used by the visualization
 
 #requires pydot (built against release 1.0.28)
 #	easy_install pydot
