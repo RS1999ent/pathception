@@ -21,7 +21,32 @@
 
 <p>To obtain proper timing information on graph edges directly from Spectroscope output, there is a required preprocessing step; run <tt>fixup.py</tt> targeting a directory with <tt>weighted_combined_ranked_graphs.dot</tt> and <tt>originating_clusters.dot</tt>.</p>
 
-<p>Some (very) experimental code for generating input from graphs in <a href="http://graphml.graphdrawing.org/" target="_blank">GraphML</a> format is available in <tt>graphs/test/yed</tt>.</p>
+<p>Some (very) experimental code for generating input from graphs in <a href="http://graphml.graphdrawing.org/" target="_blank">GraphML</a> format is available in <tt>graphs/test/yed</tt>. If you are interested in writing your own converter or converting from a custom format, the graph input format is a folder containing <tt>index.json</tt> and a set of files <tt><i>name</i>.json</tt>, where <tt>index.json</tt> has the form:</p>
+<pre>
+[
+	{ "id":1,"precursor":2, "cost":9999, "type":"Structural mutation" },
+	{ "id":3,"precursor":4, "cost":8888, "type":"Response time change" },
+	...
+]
+</pre>
+<p>where the graph in <tt>2.json</tt> is the precursor for the graph in <tt>1.json</tt>, has cost 9999, and is a structural mutation. Each graph has format:</p>
+<pre>
+{
+	"nodes": 
+	[
+	{ "id":"1", ... },
+	{ "id":"id_from", "label":"e10__t3__nodename_from" },
+	{ "id":"id_to", "label":"e10__t3__nodename_to" }
+	],
+	"edges":
+	[
+	{ "from":"id_from", "to":"id_to", "color":"black", "label":"... 23us ... 50us ..." }
+	]
+}
+</pre>
+<p>
+The node with id 1 is special, and contains graph metadata (not used in the basic visualization). Each other node has a unique ID (e.g., <tt>id_from</tt>), and a label with format <tt>e<i>machineID</i>__t<i>threadID</i>__<i>label</i></tt>. Nodes are colored by their <tt><i>machineID</i></tt>, and will contain text <tt><i>label</i></tt>. In the example above, the only  edge connects the two nodes. Timing information is parsed from the label property: the first match of <i>number</i>us in the precursor graph file will be the edge time (used for length) for the precursor, and the second match of <i>number</i>us in the mutation graph file will be the edge time for the mutation. As an aside, graphs do not need to be strict JSON - for historical reasons, they are eval'ed.
+</p>
 
 <h2>Code Documentation</h2>
 <p>Documentation for the javascript and visualization components are available in the <a href="gen/index.html" target="mainfr">jsdoc</a> (also linked on the left). Formatted js code is also there under "File Index."

@@ -629,7 +629,7 @@ RFGraph.makegraph = function(graph, options) {
  * Get a "human-readable" version of a callpoint label
  * @param original the original label
  * @param eid the machine identifier
- * @param tid the "t" identifier (?)
+ * @param tid the thread identifier (?)
  * @param lastpart the remaining string
  * @return a string that will be displayed in the visualization
  */
