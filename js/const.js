@@ -180,11 +180,11 @@ Const.COLORS = [
 ];
 
 //temporary; for Raja's talk
-
 Const.COLORS[0] = "rgb(231,197,44)"; //orange (MDS server)
 Const.COLORS[1] = "rgb(96,181,206)"; //blue (storage node 1)
 Const.COLORS[2] = "rgb(127,201,127)"; //green (storage node 2)
 Const.COLORS[3] = "rgb(210,183,214)"; //purple (NFS server) 
+Const.COLORS[4] = "rgb(255,255,153)"; //yellow 
 
 //temporary; for final Pathception submit
-Const.COLORS[0] = "rgb(127,201,127)";
+//Const.COLORS[0] = "rgb(127,201,127)";
